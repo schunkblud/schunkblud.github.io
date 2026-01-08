@@ -76,25 +76,63 @@
 
     <!-- SAĞ PANEL -->
     <aside class="sidebar">
-        <h3>Hızlı Filtre</h3>
+
+    <!-- FİLTRE -->
+    <div class="filter-box">
+        <h3>Filtrele</h3>
 
         <select>
-            <option>Tür</option>
+            <option selected disabled>Tür Seç</option>
+            <option>Aksiyon</option>
+            <option>Macera</option>
+            <option>Fantastik</option>
+            <option>Dram</option>
         </select>
 
         <select>
-            <option>Yıl</option>
+            <option selected disabled>Yıl Seç</option>
+            <option>2024</option>
+            <option>2023</option>
+            <option>2022</option>
         </select>
 
-        <button class="filter-btn">Filtrele</button>
+        <button class="filter-btn">Uygula</button>
+    </div>
 
-        <h3>Popüler Animeler</h3>
-        <ul class="top-list">
-            <li>One Piece</li>
-            <li>Naruto</li>
-            <li>Bleach</li>
-        </ul>
-    </aside>
+    <!-- TOP ANIME -->
+    <div class="top-anime">
+        <h3>En Popüler</h3>
+
+        <div class="top-item">
+            <span class="rank">1</span>
+            <img src="https://via.placeholder.com/60x80">
+            <div class="top-info">
+                <h4>One Piece</h4>
+                <span>👁 2.1M</span>
+            </div>
+        </div>
+
+        <div class="top-item">
+            <span class="rank">2</span>
+            <img src="https://via.placeholder.com/60x80">
+            <div class="top-info">
+                <h4>Naruto Shippuden</h4>
+                <span>👁 1.8M</span>
+            </div>
+        </div>
+
+        <div class="top-item">
+            <span class="rank">3</span>
+            <img src="https://via.placeholder.com/60x80">
+            <div class="top-info">
+                <h4>Attack on Titan</h4>
+                <span>👁 1.6M</span>
+            </div>
+        </div>
+
+    </div>
+
+</aside>
 
 </div>
 
