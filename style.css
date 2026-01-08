@@ -1,1 +1,65 @@
+body {
+  margin: 0;
+  background: #0b0d12;
+  color: white;
+  font-family: Arial, sans-serif;
+}
 
+.header {
+  display: flex;
+  justify-content: space-between;
+  padding: 20px;
+  background: rgba(0,0,0,0.6);
+}
+
+.logo {
+  font-size: 22px;
+  font-weight: bold;
+}
+
+.search {
+  background: #151823;
+  border: none;
+  padding: 8px 14px;
+  border-radius: 20px;
+  color: white;
+}
+
+.hero {
+  height: 420px;
+  background:
+    linear-gradient(to right, rgba(0,0,0,.85), rgba(0,0,0,.3)),
+    url('https://wallpapercave.com/wp/wp9420044.jpg') center/cover;
+  display: flex;
+  align-items: center;
+  padding: 40px;
+}
+
+.hero-content button {
+  background: #8b5cf6;
+  border: none;
+  padding: 12px 20px;
+  border-radius: 25px;
+  color: white;
+  cursor: pointer;
+}
+
+.section {
+  padding: 20px;
+}
+
+.cards {
+  display: flex;
+  gap: 15px;
+}
+
+.card {
+  background: #151823;
+  padding: 60px 20px;
+  border-radius: 15px;
+  transition: .3s;
+}
+
+.card:hover {
+  transform: scale(1.05);
+}
