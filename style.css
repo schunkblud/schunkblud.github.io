@@ -5,8 +5,8 @@
 body {
   margin: 0;
   background: #0b0d12;
-  color: white;
-  font-family: Arial, Helvetica, sans-serif;
+  color: #ffffff;
+  font-family: 'Segoe UI', Arial, sans-serif;
 }
 
 /* HEADER */
@@ -19,6 +19,7 @@ body {
   background: rgba(0,0,0,0.7);
   position: sticky;
   top: 0;
+  z-index: 100;
 }
 
 .logo {
@@ -28,24 +29,17 @@ body {
   font-weight: bold;
 }
 
-.search {
-  background: #151823;
-  border: none;
-  padding: 10px 16px;
-  border-radius: 20px;
-  color: white;
-}
-
 .profile {
   background: #151823;
   padding: 10px;
   border-radius: 50%;
 }
 
-/* HERO */
+/* HERO / DETAIL */
 
-.hero {
-  height: 420px;
+.detail-hero {
+  position: relative;
+  min-height: 420px;
   background:
     linear-gradient(to right, rgba(0,0,0,0.9), rgba(0,0,0,0.3)),
     url("https://wallpapercave.com/wp/wp9420044.jpg") center / cover;
@@ -54,107 +48,89 @@ body {
   padding: 40px;
 }
 
-.hero-content h1 {
-  font-size: 36px;
-}
-
-.hero-content button {
-  background: #8b5cf6;
-  border: none;
-  padding: 12px 22px;
-  border-radius: 25px;
-  color: white;
-  cursor: pointer;
-}
-
-/* SECTIONS */
-
-.section {
-  padding: 20px;
-}
-
-/* CARDS */
-
-.cards {
+.detail-container {
   display: flex;
-  gap: 15px;
+  gap: 30px;
+  z-index: 1;
 }
 
-.card {
-  width: 160px;
-  background: #151823;
+.poster {
+  width: 220px;
   border-radius: 16px;
-  overflow: hidden;
-  text-decoration: none;
-  color: white;
-  transition: 0.3s;
+  box-shadow: 0 10px 40px rgba(0,0,0,0.6);
 }
 
-.card:hover {
-  transform: scale(1.06);
+.detail-info h1 {
+  font-size: 36px;
+  margin-top: 0;
 }
 
-.card img {
-  width: 100%;
-}
-
-.card span {
-  display: block;
-  padding: 8px;
-  text-align: center;
-}
-
-/* DETAIL PAGE */
-
-.detail-hero {
-  height: 320px;
-  background:
-    linear-gradient(to right, rgba(0,0,0,0.9), rgba(0,0,0,0.3)),
-    url("https://cdn.myanimelist.net/images/anime/1171/109222.jpg") center / cover;
-  display: flex;
-  align-items: center;
-  padding: 40px;
-}
-
-.detail-content {
-  max-width: 500px;
-}
-
-.info span {
+.meta span {
   display: inline-block;
-  margin-right: 12px;
+  margin-right: 10px;
   background: #151823;
   padding: 6px 12px;
   border-radius: 15px;
   font-size: 13px;
 }
 
-/* EPISODES */
-
-.episodes {
-  display: flex;
-  gap: 10px;
-  flex-wrap: wrap;
+.detail-info p {
+  color: #cfcfcf;
+  max-width: 500px;
+  line-height: 1.5;
 }
 
-.episode {
+.watch {
+  margin-top: 16px;
+  background: #8b5cf6;
+  border: none;
+  padding: 12px 26px;
+  border-radius: 25px;
+  color: white;
+  cursor: pointer;
+  font-size: 15px;
+}
+
+/* EPISODES */
+
+.section {
+  padding: 20px;
+}
+
+.episode-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+  gap: 15px;
+}
+
+.episode-card {
   background: #151823;
-  padding: 10px 16px;
-  border-radius: 20px;
+  padding: 14px;
+  border-radius: 14px;
+  text-align: center;
   text-decoration: none;
   color: white;
+  transition: 0.3s;
+}
+
+.episode-card:hover {
+  background: #8b5cf6;
 }
 
 /* MOBILE */
 
 @media (max-width: 768px) {
-  .cards {
-    overflow-x: auto;
+  .detail-container {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
   }
 
-  .hero,
-  .detail-hero {
-    height: auto;
-    padding: 20px;
+  .poster {
+    width: 180px;
+  }
+
+  .detail-info h1 {
+    font-size: 28px;
   }
 }
