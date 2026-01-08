@@ -79,3 +79,16 @@ body {
   border-radius: 50%;
   cursor: pointer;
 }
+
+.hero-buttons {
+  display: flex;
+  gap: 12px;
+}
+
+.watch {
+  background: #8b5cf6;
+}
+
+.list {
+  background: rgba(255,255,255,0.15);
+}
