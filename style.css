@@ -1,0 +1,132 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+body {
+    background: #0f0f14;
+    color: #fff;
+}
+
+/* HEADER */
+.header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 15px 30px;
+    background: #111;
+}
+
+.logo {
+    font-size: 24px;
+    font-weight: bold;
+}
+
+.logo span {
+    color: #a855f7;
+}
+
+.search-box input {
+    width: 350px;
+    padding: 8px 12px;
+    border-radius: 6px;
+    border: none;
+    background: #1e1e2a;
+    color: white;
+}
+
+.header-right {
+    display: flex;
+    gap: 10px;
+}
+
+.icon-btn {
+    background: #1e1e2a;
+    border: none;
+    padding: 8px;
+    border-radius: 6px;
+    cursor: pointer;
+}
+
+.sign-in {
+    background: #a855f7;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 20px;
+    color: white;
+    cursor: pointer;
+}
+
+/* LAYOUT */
+.container {
+    margin-right: 300px;
+    padding: 30px;
+}
+
+.sidebar {
+    position: fixed;
+    right: 0;
+    top: 70px;
+    width: 280px;
+    height: 100%;
+    background: #14141c;
+    padding: 20px;
+}
+
+/* HERO */
+.hero {
+    height: 320px;
+    background: linear-gradient(
+        rgba(0,0,0,.6),
+        rgba(0,0,0,.6)
+    ), url("assets/images/hero.jpg") center/cover;
+    border-radius: 12px;
+    display: flex;
+    align-items: flex-end;
+    padding: 25px;
+}
+
+.hero-info h1 {
+    font-size: 28px;
+    margin-bottom: 10px;
+}
+
+.watch-btn {
+    background: #a855f7;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 25px;
+    color: white;
+    cursor: pointer;
+}
+
+/* GRID */
+.anime-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+    gap: 15px;
+    margin-top: 20px;
+}
+
+.anime-card {
+    position: relative;
+}
+
+.anime-card img {
+    width: 100%;
+    border-radius: 8px;
+}
+
+.ep, .lang {
+    position: absolute;
+    top: 8px;
+    padding: 3px 6px;
+    font-size: 12px;
+    background: #000;
+    border-radius: 4px;
+}
+
+.ep { left: 8px; }
+.lang { right: 8px; background: #a855f7; }
