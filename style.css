@@ -16,7 +16,7 @@ body {
   align-items: center;
   justify-content: space-between;
   padding: 16px 24px;
-  background: rgba(0,0,0,0.7);
+  background: rgba(0,0,0,0.75);
   position: sticky;
   top: 0;
   z-index: 100;
@@ -35,7 +35,7 @@ body {
   border-radius: 50%;
 }
 
-/* HERO / DETAIL */
+/* DETAIL HERO (ANIME PAGE) */
 
 .detail-hero {
   position: relative;
@@ -51,86 +51,103 @@ body {
 .detail-container {
   display: flex;
   gap: 30px;
-  z-index: 1;
 }
 
 .poster {
   width: 220px;
   border-radius: 16px;
-  box-shadow: 0 10px 40px rgba(0,0,0,0.6);
 }
 
 .detail-info h1 {
   font-size: 36px;
-  margin-top: 0;
 }
 
 .meta span {
-  display: inline-block;
-  margin-right: 10px;
   background: #151823;
   padding: 6px 12px;
   border-radius: 15px;
   font-size: 13px;
+  margin-right: 8px;
 }
 
-.detail-info p {
-  color: #cfcfcf;
-  max-width: 500px;
-  line-height: 1.5;
+/* WATCH PAGE */
+
+.watch-page {
+  background: #0b0d12;
 }
 
-.watch {
-  margin-top: 16px;
-  background: #8b5cf6;
-  border: none;
-  padding: 12px 26px;
-  border-radius: 25px;
-  color: white;
-  cursor: pointer;
-  font-size: 15px;
-}
-
-/* EPISODES */
-
-.section {
+.player-layout {
+  display: flex;
+  gap: 20px;
   padding: 20px;
 }
 
-.episode-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
-  gap: 15px;
+.video-section {
+  flex: 3;
 }
 
-.episode-card {
-  background: #151823;
-  padding: 14px;
-  border-radius: 14px;
-  text-align: center;
+.video-wrapper {
+  position: relative;
+  padding-top: 56.25%;
+  background: black;
+  border-radius: 16px;
+  overflow: hidden;
+}
+
+.video-wrapper iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.video-section h1 {
+  margin: 14px 0 6px;
+  font-size: 22px;
+}
+
+.episode-desc {
+  color: #bdbdbd;
+  font-size: 14px;
+}
+
+/* EPISODE LIST */
+
+.episode-sidebar {
+  flex: 1;
+  background: #11131a;
+  border-radius: 16px;
+  padding: 16px;
+}
+
+.episode-sidebar h3 {
+  margin-top: 0;
+}
+
+.episode-link {
+  display: block;
+  padding: 10px 14px;
+  border-radius: 12px;
   text-decoration: none;
   color: white;
-  transition: 0.3s;
+  margin-bottom: 8px;
+  background: #151823;
+  transition: 0.2s;
 }
 
-.episode-card:hover {
+.episode-link:hover {
+  background: #8b5cf6;
+}
+
+.episode-link.active {
   background: #8b5cf6;
 }
 
 /* MOBILE */
 
-@media (max-width: 768px) {
-  .detail-container {
+@media (max-width: 900px) {
+  .player-layout {
     flex-direction: column;
-    align-items: center;
-    text-align: center;
-  }
-
-  .poster {
-    width: 180px;
-  }
-
-  .detail-info h1 {
-    font-size: 28px;
   }
 }
