@@ -5,7 +5,7 @@
 body {
   margin: 0;
   background: #0b0d12;
-  color: #ffffff;
+  color: white;
   font-family: Arial, Helvetica, sans-serif;
 }
 
@@ -16,31 +16,30 @@ body {
   align-items: center;
   justify-content: space-between;
   padding: 16px 24px;
-  background: rgba(0,0,0,0.6);
+  background: rgba(0,0,0,0.7);
   position: sticky;
   top: 0;
-  z-index: 100;
 }
 
 .logo {
+  color: white;
+  text-decoration: none;
   font-size: 22px;
   font-weight: bold;
 }
 
-.search-box input {
+.search {
   background: #151823;
   border: none;
   padding: 10px 16px;
   border-radius: 20px;
   color: white;
-  outline: none;
 }
 
 .profile {
   background: #151823;
   padding: 10px;
   border-radius: 50%;
-  cursor: pointer;
 }
 
 /* HERO */
@@ -55,50 +54,23 @@ body {
   padding: 40px;
 }
 
-.hero-content {
-  max-width: 500px;
-}
-
 .hero-content h1 {
   font-size: 36px;
-  margin-bottom: 10px;
 }
 
-.hero-content p {
-  color: #b3b3b3;
-  margin-bottom: 20px;
-}
-
-.hero-buttons {
-  display: flex;
-  gap: 12px;
-}
-
-.hero-buttons button {
+.hero-content button {
+  background: #8b5cf6;
   border: none;
   padding: 12px 22px;
   border-radius: 25px;
-  font-size: 14px;
-  cursor: pointer;
   color: white;
-}
-
-.watch {
-  background: #8b5cf6;
-}
-
-.list {
-  background: rgba(255,255,255,0.15);
+  cursor: pointer;
 }
 
 /* SECTIONS */
 
 .section {
   padding: 20px;
-}
-
-.section h2 {
-  margin-bottom: 12px;
 }
 
 /* CARDS */
@@ -113,8 +85,9 @@ body {
   background: #151823;
   border-radius: 16px;
   overflow: hidden;
+  text-decoration: none;
+  color: white;
   transition: 0.3s;
-  cursor: pointer;
 }
 
 .card:hover {
@@ -123,14 +96,53 @@ body {
 
 .card img {
   width: 100%;
-  display: block;
 }
 
 .card span {
   display: block;
   padding: 8px;
-  font-size: 14px;
   text-align: center;
+}
+
+/* DETAIL PAGE */
+
+.detail-hero {
+  height: 320px;
+  background:
+    linear-gradient(to right, rgba(0,0,0,0.9), rgba(0,0,0,0.3)),
+    url("https://cdn.myanimelist.net/images/anime/1171/109222.jpg") center / cover;
+  display: flex;
+  align-items: center;
+  padding: 40px;
+}
+
+.detail-content {
+  max-width: 500px;
+}
+
+.info span {
+  display: inline-block;
+  margin-right: 12px;
+  background: #151823;
+  padding: 6px 12px;
+  border-radius: 15px;
+  font-size: 13px;
+}
+
+/* EPISODES */
+
+.episodes {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.episode {
+  background: #151823;
+  padding: 10px 16px;
+  border-radius: 20px;
+  text-decoration: none;
+  color: white;
 }
 
 /* MOBILE */
@@ -140,12 +152,9 @@ body {
     overflow-x: auto;
   }
 
-  .hero {
+  .hero,
+  .detail-hero {
     height: auto;
     padding: 20px;
-  }
-
-  .hero-content h1 {
-    font-size: 28px;
   }
 }
