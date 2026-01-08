@@ -356,3 +356,33 @@ img {
     font-size: 26px;
   }
 }
+
+/* ================= EPISODES ================= */
+
+.anime-episodes {
+  padding: 20px 28px 50px;
+}
+
+.anime-episodes h2 {
+  margin-bottom: 12px;
+}
+
+.episode-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+  gap: 12px;
+}
+
+.episode-card {
+  background: #151823;
+  padding: 12px;
+  text-align: center;
+  border-radius: 12px;
+  font-size: 14px;
+  transition: background 0.3s, transform 0.2s;
+}
+
+.episode-card:hover {
+  background: #8b5cf6;
+  transform: scale(1.05);
+}
