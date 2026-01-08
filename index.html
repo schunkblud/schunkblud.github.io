@@ -8,62 +8,139 @@
 </head>
 <body>
 
+<!-- ================= HEADER ================= -->
 <header class="header">
-  <div class="logo">ZenStream</div>
+  <div class="header-left">
+    <a href="index.html" class="logo">ZenStream</a>
 
-  <nav class="nav">
-    <a href="#">Ana Sayfa</a>
-    <a href="#">Animeler</a>
-    <a href="#">Popüler</a>
-  </nav>
+    <nav class="nav">
+      <a href="#">Ana Sayfa</a>
+      <a href="#">Animeler</a>
+      <a href="#">Popüler</a>
+      <a href="#">Yeni</a>
+    </nav>
+  </div>
 
   <div class="header-right">
-    <input class="search" type="text" placeholder="Ara...">
+    <input id="searchInput" class="search" type="text" placeholder="Anime ara...">
     <div class="profile">👤</div>
   </div>
 </header>
 
-<!-- SLIDER -->
+<!-- ================= SLIDER ================= -->
 <section class="slider">
-  <div class="slide active" style="background-image:url('https://wallpapercave.com/wp/wp9420044.jpg')">
-    <div class="slide-content">
-      <h1>Anime Dünyasına Hoş Geldin</h1>
-      <p>En popüler animeleri ücretsiz izle</p>
+  <div class="slides">
+
+    <div class="slide active" style="background-image:url('https://wallpapercave.com/wp/wp9420044.jpg')">
+      <div class="slide-overlay"></div>
+      <div class="slide-content">
+        <h1>Jujutsu Kaisen</h1>
+        <p>Lanetler, aksiyon ve karanlık bir dünya</p>
+        <a href="anime.html?id=40748" class="btn primary">▶ İzle</a>
+      </div>
     </div>
+
+    <div class="slide" style="background-image:url('https://wallpapercave.com/wp/wp5125494.jpg')">
+      <div class="slide-overlay"></div>
+      <div class="slide-content">
+        <h1>Attack on Titan</h1>
+        <p>İnsanlık hayatta kalabilecek mi?</p>
+        <a href="anime.html?id=16498" class="btn primary">▶ İzle</a>
+      </div>
+    </div>
+
+    <div class="slide" style="background-image:url('https://wallpapercave.com/wp/wp1839574.jpg')">
+      <div class="slide-overlay"></div>
+      <div class="slide-content">
+        <h1>Demon Slayer</h1>
+        <p>İntikam ve kardeşlik hikâyesi</p>
+        <a href="anime.html?id=38000" class="btn primary">▶ İzle</a>
+      </div>
+    </div>
+
   </div>
+
+  <button class="slider-btn prev">❮</button>
+  <button class="slider-btn next">❯</button>
 </section>
 
-<!-- POPÜLER ANİMELER -->
+<!-- ================= POPÜLER ================= -->
 <section class="row">
   <h2>🔥 Popüler Animeler</h2>
-  <div class="card-row" id="animeList">
+  <div class="card-row" id="popularAnime">
     <div class="loading">Yükleniyor...</div>
   </div>
 </section>
 
+<!-- ================= YENİ ================= -->
+<section class="row">
+  <h2>🆕 Yeni Eklenenler</h2>
+  <div class="card-row" id="newAnime">
+    <div class="loading">Yükleniyor...</div>
+  </div>
+</section>
+
+<!-- ================= FOOTER ================= -->
+<footer class="footer">
+  <p>© 2026 ZenStream — Anime severler için</p>
+</footer>
+
+<!-- ================= JAVASCRIPT ================= -->
 <script>
-const animeList = document.getElementById("animeList");
+/* -------- SLIDER -------- */
+let slideIndex = 0;
+const slides = document.querySelectorAll(".slide");
+
+function showSlide(i) {
+  slides.forEach(slide => slide.classList.remove("active"));
+  slides[i].classList.add("active");
+}
+
+document.querySelector(".next").onclick = () => {
+  slideIndex = (slideIndex + 1) % slides.length;
+  showSlide(slideIndex);
+};
+
+document.querySelector(".prev").onclick = () => {
+  slideIndex = (slideIndex - 1 + slides.length) % slides.length;
+  showSlide(slideIndex);
+};
+
+setInterval(() => {
+  slideIndex = (slideIndex + 1) % slides.length;
+  showSlide(slideIndex);
+}, 5000);
+
+/* -------- API -------- */
+const popularContainer = document.getElementById("popularAnime");
+const newContainer = document.getElementById("newAnime");
 
 fetch("https://api.jikan.moe/v4/top/anime?limit=12")
   .then(res => res.json())
   .then(data => {
-    animeList.innerHTML = "";
-
+    popularContainer.innerHTML = "";
     data.data.forEach(anime => {
-      const card = document.createElement("a");
-      card.className = "poster-card";
-      card.href = "anime.html";
-
-      card.innerHTML = `
-        <img src="${anime.images.jpg.image_url}">
-        <span>${anime.title}</span>
+      popularContainer.innerHTML += `
+        <a href="anime.html?id=${anime.mal_id}" class="poster-card">
+          <img src="${anime.images.jpg.image_url}">
+          <span>${anime.title}</span>
+        </a>
       `;
-
-      animeList.appendChild(card);
     });
-  })
-  .catch(() => {
-    animeList.innerHTML = "<p>Animeler yüklenemedi.</p>";
+  });
+
+fetch("https://api.jikan.moe/v4/seasons/now")
+  .then(res => res.json())
+  .then(data => {
+    newContainer.innerHTML = "";
+    data.data.slice(0,12).forEach(anime => {
+      newContainer.innerHTML += `
+        <a href="anime.html?id=${anime.mal_id}" class="poster-card">
+          <img src="${anime.images.jpg.image_url}">
+          <span>${anime.title}</span>
+        </a>
+      `;
+    });
   });
 </script>
 
