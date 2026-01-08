@@ -1,73 +1,84 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="tr">
 <head>
     <meta charset="UTF-8">
-    <title>AnimeStream</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Anime İzle | Ücretsiz Anime Platformu</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-<!-- HEADER -->
-<header class="header">
-    <div class="logo">Anime<span>Stream</span></div>
+<!-- ÜST MENÜ -->
+<header class="navbar">
+    <div class="logo">AnimeTR</div>
 
-    <div class="search-box">
-        <input type="text" placeholder="Enter anime name">
-    </div>
+    <input type="text" placeholder="Anime ara..." class="search">
 
-    <div class="header-right">
-        <button class="icon-btn">🐦</button>
-        <button class="icon-btn">📨</button>
-        <button class="icon-btn">📌</button>
-        <button class="sign-in">Sign in</button>
+    <div class="nav-buttons">
+        <button class="login-btn">Giriş Yap</button>
     </div>
 </header>
 
-<!-- MAIN -->
-<main class="container">
+<!-- ANA ALAN -->
+<div class="container">
 
-    <!-- HERO -->
-    <section class="hero">
-        <div class="hero-info">
-            <h1>Jujutsu Kaisen: The Culling Game Part 1</h1>
-            <p>
-                The third season of Jujutsu Kaisen. After the Shibuya incident,
-                a deadly jujutsu battle known as the Culling Game begins...
-            </p>
-            <button class="watch-btn">Watch now</button>
-        </div>
-    </section>
+    <!-- SOL İÇERİK -->
+    <main class="content">
 
-    <!-- CONTENT -->
-    <section class="content">
-        <h2>Recently Updated</h2>
-
-        <div class="anime-grid" id="animeGrid">
-            <!-- Anime Card -->
-            <div class="anime-card">
-                <img src="assets/images/sample.jpg">
-                <span class="ep">EP 12</span>
-                <span class="lang">SUB</span>
-                <h3>Anime Title</h3>
+        <!-- SLIDER -->
+        <section class="slider">
+            <div class="slider-info">
+                <h2>Jujutsu Kaisen</h2>
+                <p>Laneti yenmek için savaş başlıyor.</p>
+                <button>Şimdi İzle</button>
             </div>
-        </div>
-    </section>
+        </section>
 
-</main>
+        <!-- SON EKLENENLER -->
+        <section>
+            <h3>Son Güncellenenler</h3>
 
-<!-- SIDEBAR -->
-<aside class="sidebar">
-    <h3>Quick Filter</h3>
-    <button class="filter-btn">Filter</button>
+            <div class="anime-grid">
 
-    <h3>Top Anime</h3>
-    <ul class="top-list">
-        <li>One Piece</li>
-        <li>Jujutsu Kaisen</li>
-        <li>Demon Slayer</li>
-    </ul>
-</aside>
+                <div class="anime-card">
+                    <span class="badge">SUB</span>
+                    <img src="https://via.placeholder.com/200x280">
+                    <h4>Anime Adı</h4>
+                </div>
+
+                <div class="anime-card">
+                    <span class="badge">DUB</span>
+                    <img src="https://via.placeholder.com/200x280">
+                    <h4>Anime Adı</h4>
+                </div>
+
+            </div>
+        </section>
+
+    </main>
+
+    <!-- SAĞ PANEL -->
+    <aside class="sidebar">
+        <h3>Hızlı Filtre</h3>
+
+        <select>
+            <option>Tür</option>
+        </select>
+
+        <select>
+            <option>Yıl</option>
+        </select>
+
+        <button class="filter-btn">Filtrele</button>
+
+        <h3>Popüler Animeler</h3>
+        <ul class="top-list">
+            <li>One Piece</li>
+            <li>Naruto</li>
+            <li>Bleach</li>
+        </ul>
+    </aside>
+
+</div>
 
 <script src="script.js"></script>
 </body>
