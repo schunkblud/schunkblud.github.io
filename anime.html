@@ -2,33 +2,106 @@
 <html lang="tr">
 <head>
   <meta charset="UTF-8">
-  <title>Jujutsu Kaisen | ZenStream</title>
+  <title>Anime Detay | ZenStream</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
+<!-- ================= HEADER ================= -->
 <header class="header">
-  <a href="index.html" class="logo">ZenStream</a>
-  <div class="profile">👤</div>
+  <div class="header-left">
+    <a href="index.html" class="logo">ZenStream</a>
+
+    <nav class="nav">
+      <a href="index.html">Ana Sayfa</a>
+      <a href="#">Animeler</a>
+      <a href="#">Popüler</a>
+      <a href="#">Yeni</a>
+    </nav>
+  </div>
+
+  <div class="header-right">
+    <input class="search" type="text" placeholder="Anime ara...">
+    <div class="profile">👤</div>
+  </div>
 </header>
 
-<section class="detail-hero">
-  <div class="detail-container">
-    <img class="poster"
-      src="https://cdn.myanimelist.net/images/anime/1171/109222.jpg">
+<!-- ================= HERO ================= -->
+<section class="anime-hero" id="animeHero">
+  <div class="anime-hero-overlay"></div>
+  <div class="anime-hero-content">
+    <h1>Yükleniyor...</h1>
+  </div>
+</section>
 
-    <div class="detail-info">
-      <h1>Jujutsu Kaisen</h1>
+<!-- ================= DETAIL ================= -->
+<section class="anime-detail">
+  <div class="detail-container" id="animeDetail">
+    <div class="loading">Anime bilgileri yükleniyor...</div>
+  </div>
+</section>
 
-      <div class="meta">
-        <span>⭐ 8.6</span>
-        <span>⚔ Aksiyon</span>
-        <span>👻 Doğaüstü</span>
-        <span>📺 24 Bölüm</span>
-      </div>
+<!-- ================= JAVASCRIPT ================= -->
+<script>
+const params = new URLSearchParams(window.location.search);
+const animeId = params.get("id");
 
-      <p>
-        Lanetlerle dolu bir dünyada geçen, aksiyon ve doğaüstü güçleri konu alan
-        popüler bir anime serisi.
-      </p
+const hero = document.getElementById("animeHero");
+const heroContent = hero.querySelector(".anime-hero-content");
+const detail = document.getElementById("animeDetail");
+
+if (!animeId) {
+  detail.innerHTML = "<p>Anime bulunamadı.</p>";
+} else {
+  fetch(`https://api.jikan.moe/v4/anime/${animeId}`)
+    .then(res => res.json())
+    .then(data => {
+      const anime = data.data;
+
+      /* HERO */
+      hero.style.backgroundImage = `
+        linear-gradient(to right, rgba(0,0,0,0.9), rgba(0,0,0,0.3)),
+        url('${anime.images.jpg.large_image_url}')
+      `;
+
+      heroContent.innerHTML = `
+        <h1>${anime.title}</h1>
+        <p>${anime.tagline ?? "Bu animeyi keşfet"}</p>
+      `;
+
+      /* DETAIL */
+      detail.innerHTML = `
+        <img class="detail-poster" src="${anime.images.jpg.large_image_url}">
+        <div class="detail-info">
+          <h2>${anime.title}</h2>
+
+          <div class="detail-meta">
+            <span>⭐ ${anime.score ?? "?"}</span>
+            <span>📺 ${anime.episodes ?? "?"} Bölüm</span>
+            <span>📅 ${anime.year ?? "?"}</span>
+          </div>
+
+          <p class="synopsis">
+            ${anime.synopsis ?? "Açıklama bulunamadı."}
+          </p>
+
+          <p class="genres">
+            <b>Türler:</b>
+            ${anime.genres.map(g => g.name).join(", ")}
+          </p>
+
+          <a href="watch.html" class="btn primary">
+            ▶ İzlemeye Başla
+          </a>
+        </div>
+      `;
+    })
+    .catch(() => {
+      detail.innerHTML = "<p>Anime yüklenirken hata oluştu.</p>";
+    });
+}
+</script>
+
+</body>
+</html>
