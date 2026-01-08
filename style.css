@@ -13,10 +13,10 @@ body {
 
 .header {
   display: flex;
-  align-items: center;
   justify-content: space-between;
+  align-items: center;
   padding: 16px 28px;
-  background: rgba(0,0,0,0.75);
+  background: rgba(0,0,0,0.85);
   position: sticky;
   top: 0;
   z-index: 100;
@@ -31,7 +31,6 @@ body {
   margin: 0 10px;
   text-decoration: none;
   color: #bdbdbd;
-  font-size: 14px;
 }
 
 .nav a:hover {
@@ -40,14 +39,13 @@ body {
 
 .header-right {
   display: flex;
-  align-items: center;
   gap: 12px;
 }
 
 .search {
   background: #151823;
   border: none;
-  padding: 9px 16px;
+  padding: 8px 14px;
   border-radius: 20px;
   color: white;
 }
@@ -58,56 +56,30 @@ body {
   border-radius: 50%;
 }
 
-/* HERO MAIN */
+/* SLIDER */
 
-.hero-main {
-  position: relative;
-  height: 520px;
+.slider {
+  height: 420px;
   background:
     linear-gradient(to right, rgba(0,0,0,0.9), rgba(0,0,0,0.3)),
     url("https://wallpapercave.com/wp/wp9420044.jpg") center / cover;
   display: flex;
   align-items: center;
-  padding: 60px;
 }
 
-.hero-content {
-  max-width: 480px;
+.slide-content {
+  padding: 80px;
 }
 
-.hero-content h1 {
+.slide-content h1 {
   font-size: 42px;
-  margin-bottom: 10px;
 }
 
-.hero-content p {
+.slide-content p {
   color: #cfcfcf;
-  line-height: 1.5;
 }
 
-.hero-buttons {
-  margin-top: 20px;
-  display: flex;
-  gap: 12px;
-}
-
-.btn {
-  padding: 12px 26px;
-  border-radius: 25px;
-  text-decoration: none;
-  color: white;
-  font-size: 14px;
-}
-
-.primary {
-  background: #8b5cf6;
-}
-
-.secondary {
-  background: rgba(255,255,255,0.15);
-}
-
-/* ROWS */
+/* ROW */
 
 .row {
   padding: 20px 28px;
@@ -117,13 +89,15 @@ body {
   margin-bottom: 12px;
 }
 
+/* CARD ROW */
+
 .card-row {
   display: flex;
   gap: 16px;
   overflow-x: auto;
 }
 
-/* POSTER CARDS */
+/* POSTER CARD */
 
 .poster-card {
   min-width: 160px;
@@ -151,6 +125,13 @@ body {
   text-align: center;
 }
 
+/* LOADING */
+
+.loading {
+  color: #aaa;
+  font-size: 14px;
+}
+
 /* MOBILE */
 
 @media (max-width: 768px) {
@@ -158,12 +139,11 @@ body {
     display: none;
   }
 
-  .hero-main {
-    height: auto;
-    padding: 30px;
+  .slide-content {
+    padding: 40px;
   }
 
-  .hero-content h1 {
-    font-size: 30px;
+  .slide-content h1 {
+    font-size: 28px;
   }
 }
