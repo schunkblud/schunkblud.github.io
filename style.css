@@ -63,3 +63,19 @@ body {
 .card:hover {
   transform: scale(1.05);
 }
+
+.search-box input {
+  background: #151823;
+  border: none;
+  padding: 10px 16px;
+  border-radius: 20px;
+  color: white;
+  width: 180px;
+}
+
+.profile {
+  background: #151823;
+  padding: 10px;
+  border-radius: 50%;
+  cursor: pointer;
+}
