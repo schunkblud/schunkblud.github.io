@@ -451,3 +451,17 @@ img {
 .watch-nav a:hover {
   background: #8b5cf6;
 }
+
+/* ================= FAVORITES ================= */
+
+.favorite-btn {
+  margin-top: 12px;
+  background: #151823;
+  border: none;
+  color: #fff;
+  cursor: pointer;
+}
+
+.favorite-btn.active {
+  background: #ef4444;
+}
