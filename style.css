@@ -533,3 +533,36 @@ body {
         width: 220px;
     }
 }
+
+/* ===== BÖLÜM LİSTESİ ===== */
+
+.episode-page {
+    max-width: 900px;
+    margin: 40px auto;
+    padding: 0 20px;
+}
+
+.episode-page h1 {
+    margin-bottom: 20px;
+}
+
+.episode-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+    gap: 12px;
+}
+
+.episode-item {
+    background: #1a1a1a;
+    padding: 12px;
+    border-radius: 10px;
+    display: flex;
+    justify-content: space-between;
+    color: #fff;
+    text-decoration: none;
+    font-size: 14px;
+}
+
+.episode-item:hover {
+    background: #7c3aed;
+}
