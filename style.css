@@ -54,10 +54,22 @@ body {
 }
 
 .card {
+  width: 160px;
   background: #151823;
-  padding: 60px 20px;
   border-radius: 15px;
+  overflow: hidden;
   transition: .3s;
+}
+
+.card img {
+  width: 100%;
+  display: block;
+}
+
+.card span {
+  padding: 8px;
+  display: block;
+  font-size: 14px;
 }
 
 .card:hover {
