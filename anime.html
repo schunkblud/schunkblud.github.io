@@ -126,7 +126,50 @@ if (!animeId) {
     .catch(() => {
       detail.innerHTML = "<p>Anime yüklenirken hata oluştu.</p>";
     });
+function getFavorites() {
+  return JSON.parse(localStorage.getItem("favorites")) || [];
 }
+
+function isFavorite(id) {
+  return getFavorites().includes(id);
+}
+
+function toggleFavorite(id) {
+  let favs = getFavorites();
+
+  if (favs.includes(id)) {
+    favs = favs.filter(f => f !== id);
+  } else {
+    favs.push(id);
+  }
+
+  localStorage.setItem("favorites", JSON.stringify(favs));
+  updateFavoriteButton(id);
+}
+
+function updateFavoriteButton(id) {
+  const btn = document.getElementById("favoriteBtn");
+  if (!btn) return;
+
+  if (isFavorite(id)) {
+    btn.textContent = "❤️ Favorilerden Çıkar";
+    btn.classList.add("active");
+  } else {
+    btn.textContent = "⭐ Favorilere Ekle";
+    btn.classList.remove("active");
+  }
+}
+
+document.addEventListener("DOMContentLoaded", () => {
+  if (!animeId) return;
+
+  updateFavoriteButton(animeId);
+
+  const btn = document.getElementById("favoriteBtn");
+  if (btn) {
+    btn.addEventListener("click", () => toggleFavorite(animeId));
+  }
+});
 </script>
 
 </body>
