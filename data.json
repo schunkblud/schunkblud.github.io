@@ -1,0 +1,20 @@
+[
+  {
+    "title": "Jujutsu Kaisen",
+    "image": "assets/images/sample.jpg",
+    "episode": "EP 12",
+    "lang": "SUB"
+  },
+  {
+    "title": "One Piece",
+    "image": "assets/images/sample.jpg",
+    "episode": "EP 1090",
+    "lang": "SUB"
+  },
+  {
+    "title": "Demon Slayer",
+    "image": "assets/images/sample.jpg",
+    "episode": "EP 8",
+    "lang": "DUB"
+  }
+]
