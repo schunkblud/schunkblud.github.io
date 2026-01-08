@@ -2,7 +2,7 @@
 <html lang="tr">
 <head>
   <meta charset="UTF-8">
-  <title>ZenStream</title>
+  <title>ZenStream | Anime İzle</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="style.css">
 </head>
@@ -10,40 +10,83 @@
 
 <header class="header">
   <div class="logo">ZenStream</div>
-  <input class="search" type="text" placeholder="Ara...">
-  <div class="profile">👤</div>
+
+  <nav class="nav">
+    <a href="#">Ana Sayfa</a>
+    <a href="#">Animeler</a>
+    <a href="#">Popüler</a>
+    <a href="#">Yeni</a>
+  </nav>
+
+  <div class="header-right">
+    <input class="search" type="text" placeholder="Ara...">
+    <div class="profile">👤</div>
+  </div>
 </header>
 
-<section class="hero">
+<section class="hero-main">
+  <div class="hero-overlay"></div>
+
   <div class="hero-content">
     <h1>Jujutsu Kaisen 0</h1>
-    <p>Yuta Okkotsu, lanetli bir ruhla yaşamak zorunda kalan genç bir öğrencidir.</p>
-    <button>▶ Hemen İzle</button>
+    <p>
+      Lanetler, aksiyon ve karanlık bir hikâye.
+      Jujutsu dünyasına adım at.
+    </p>
+
+    <div class="hero-buttons">
+      <a href="anime.html" class="btn primary">▶ İzle</a>
+      <a href="#" class="btn secondary">＋ Listem</a>
+    </div>
   </div>
 </section>
 
-<section class="section">
+<section class="row">
   <h2>Popüler Animeler</h2>
-
-  <div class="cards">
-    <a href="anime.html" class="card">
+  <div class="card-row">
+    <a href="anime.html" class="poster-card">
       <img src="https://cdn.myanimelist.net/images/anime/1171/109222.jpg">
       <span>Jujutsu Kaisen</span>
     </a>
 
-    <a href="anime.html" class="card">
+    <a href="anime.html" class="poster-card">
       <img src="https://cdn.myanimelist.net/images/anime/10/47347.jpg">
       <span>Attack on Titan</span>
     </a>
 
-    <a href="anime.html" class="card">
+    <a href="anime.html" class="poster-card">
       <img src="https://cdn.myanimelist.net/images/anime/1223/96541.jpg">
       <span>Demon Slayer</span>
     </a>
 
-    <a href="anime.html" class="card">
+    <a href="anime.html" class="poster-card">
       <img src="https://cdn.myanimelist.net/images/anime/13/17405.jpg">
       <span>Death Note</span>
+    </a>
+
+    <a href="anime.html" class="poster-card">
+      <img src="https://cdn.myanimelist.net/images/anime/1530/117776.jpg">
+      <span>Chainsaw Man</span>
+    </a>
+  </div>
+</section>
+
+<section class="row">
+  <h2>Yeni Eklenenler</h2>
+  <div class="card-row">
+    <a href="anime.html" class="poster-card">
+      <img src="https://cdn.myanimelist.net/images/anime/1812/134736.jpg">
+      <span>Solo Leveling</span>
+    </a>
+
+    <a href="anime.html" class="poster-card">
+      <img src="https://cdn.myanimelist.net/images/anime/1015/138006.jpg">
+      <span>Frieren</span>
+    </a>
+
+    <a href="anime.html" class="poster-card">
+      <img src="https://cdn.myanimelist.net/images/anime/1765/135099.jpg">
+      <span>Kaiju No.8</span>
     </a>
   </div>
 </section>
