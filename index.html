@@ -9,13 +9,37 @@
 
 <!-- ÜST MENÜ -->
 <header class="navbar">
-    <div class="logo">AnimeTR</div>
 
-    <input type="text" placeholder="Anime ara..." class="search">
+    <div class="nav-left">
+        <div class="logo">AnimeTR</div>
 
-    <div class="nav-buttons">
-        <button class="login-btn">Giriş Yap</button>
+        <nav class="nav-links">
+            <a href="#">Anasayfa</a>
+
+            <div class="dropdown">
+                <span>Türler ▾</span>
+                <div class="dropdown-menu">
+                    <a href="#">Aksiyon</a>
+                    <a href="#">Macera</a>
+                    <a href="#">Fantastik</a>
+                    <a href="#">Dram</a>
+                </div>
+            </div>
+
+            <a href="#">Yeni Bölümler</a>
+            <a href="#">Takvim</a>
+        </nav>
     </div>
+
+    <div class="nav-right">
+        <input type="text" placeholder="Anime ara..." class="search">
+        <button class="login-btn">Giriş Yap</button>
+
+        <div class="hamburger" onclick="toggleMenu()">
+            ☰
+        </div>
+    </div>
+
 </header>
 
 <!-- ANA ALAN -->
