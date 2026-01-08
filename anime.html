@@ -42,6 +42,14 @@
   </div>
 </section>
 
+<!-- ================= EPISODES ================= -->
+<section class="anime-episodes">
+  <h2>📺 Bölümler</h2>
+  <div class="episode-grid" id="episodeList">
+    <div class="loading">Bölümler yükleniyor...</div>
+  </div>
+</section>
+
 <!-- ================= JAVASCRIPT ================= -->
 <script>
 const params = new URLSearchParams(window.location.search);
@@ -50,6 +58,7 @@ const animeId = params.get("id");
 const hero = document.getElementById("animeHero");
 const heroContent = hero.querySelector(".anime-hero-content");
 const detail = document.getElementById("animeDetail");
+const episodeList = document.getElementById("episodeList");
 
 if (!animeId) {
   detail.innerHTML = "<p>Anime bulunamadı.</p>";
@@ -91,11 +100,24 @@ if (!animeId) {
             ${anime.genres.map(g => g.name).join(", ")}
           </p>
 
-          <a href="watch.html" class="btn primary">
-            ▶ İzlemeye Başla
+          <a href="watch.html?id=${animeId}&ep=1" class="btn primary">
+            ▶ 1. Bölümü İzle
           </a>
         </div>
       `;
+
+      /* EPISODES */
+      episodeList.innerHTML = "";
+
+      const totalEpisodes = anime.episodes ?? 12;
+
+      for (let i = 1; i <= totalEpisodes; i++) {
+        episodeList.innerHTML += `
+          <a href="watch.html?id=${animeId}&ep=${i}" class="episode-card">
+            Bölüm ${i}
+          </a>
+        `;
+      }
     })
     .catch(() => {
       detail.innerHTML = "<p>Anime yüklenirken hata oluştu.</p>";
