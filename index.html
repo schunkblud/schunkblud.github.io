@@ -15,7 +15,6 @@
     <a href="#">Ana Sayfa</a>
     <a href="#">Animeler</a>
     <a href="#">Popüler</a>
-    <a href="#">Yeni</a>
   </nav>
 
   <div class="header-right">
@@ -24,72 +23,49 @@
   </div>
 </header>
 
-<section class="hero-main">
-  <div class="hero-overlay"></div>
-
-  <div class="hero-content">
-    <h1>Jujutsu Kaisen 0</h1>
-    <p>
-      Lanetler, aksiyon ve karanlık bir hikâye.
-      Jujutsu dünyasına adım at.
-    </p>
-
-    <div class="hero-buttons">
-      <a href="anime.html" class="btn primary">▶ İzle</a>
-      <a href="#" class="btn secondary">＋ Listem</a>
+<!-- SLIDER -->
+<section class="slider">
+  <div class="slide active" style="background-image:url('https://wallpapercave.com/wp/wp9420044.jpg')">
+    <div class="slide-content">
+      <h1>Anime Dünyasına Hoş Geldin</h1>
+      <p>En popüler animeleri ücretsiz izle</p>
     </div>
   </div>
 </section>
 
+<!-- POPÜLER ANİMELER -->
 <section class="row">
-  <h2>Popüler Animeler</h2>
-  <div class="card-row">
-    <a href="anime.html" class="poster-card">
-      <img src="https://cdn.myanimelist.net/images/anime/1171/109222.jpg">
-      <span>Jujutsu Kaisen</span>
-    </a>
-
-    <a href="anime.html" class="poster-card">
-      <img src="https://cdn.myanimelist.net/images/anime/10/47347.jpg">
-      <span>Attack on Titan</span>
-    </a>
-
-    <a href="anime.html" class="poster-card">
-      <img src="https://cdn.myanimelist.net/images/anime/1223/96541.jpg">
-      <span>Demon Slayer</span>
-    </a>
-
-    <a href="anime.html" class="poster-card">
-      <img src="https://cdn.myanimelist.net/images/anime/13/17405.jpg">
-      <span>Death Note</span>
-    </a>
-
-    <a href="anime.html" class="poster-card">
-      <img src="https://cdn.myanimelist.net/images/anime/1530/117776.jpg">
-      <span>Chainsaw Man</span>
-    </a>
+  <h2>🔥 Popüler Animeler</h2>
+  <div class="card-row" id="animeList">
+    <div class="loading">Yükleniyor...</div>
   </div>
 </section>
 
-<section class="row">
-  <h2>Yeni Eklenenler</h2>
-  <div class="card-row">
-    <a href="anime.html" class="poster-card">
-      <img src="https://cdn.myanimelist.net/images/anime/1812/134736.jpg">
-      <span>Solo Leveling</span>
-    </a>
+<script>
+const animeList = document.getElementById("animeList");
 
-    <a href="anime.html" class="poster-card">
-      <img src="https://cdn.myanimelist.net/images/anime/1015/138006.jpg">
-      <span>Frieren</span>
-    </a>
+fetch("https://api.jikan.moe/v4/top/anime?limit=12")
+  .then(res => res.json())
+  .then(data => {
+    animeList.innerHTML = "";
 
-    <a href="anime.html" class="poster-card">
-      <img src="https://cdn.myanimelist.net/images/anime/1765/135099.jpg">
-      <span>Kaiju No.8</span>
-    </a>
-  </div>
-</section>
+    data.data.forEach(anime => {
+      const card = document.createElement("a");
+      card.className = "poster-card";
+      card.href = "anime.html";
+
+      card.innerHTML = `
+        <img src="${anime.images.jpg.image_url}">
+        <span>${anime.title}</span>
+      `;
+
+      animeList.appendChild(card);
+    });
+  })
+  .catch(() => {
+    animeList.innerHTML = "<p>Animeler yüklenemedi.</p>";
+  });
+</script>
 
 </body>
 </html>
