@@ -590,3 +590,84 @@ body {
         width: 140px;
     }
 }
+
+/* === ANIME INFO (9ANIME STYLE) === */
+
+.anime-info {
+    display: flex;
+    gap: 25px;
+    align-items: flex-start;
+    background: linear-gradient(180deg, #1a1a22, #14141b);
+    border-radius: 14px;
+    padding: 22px;
+    box-shadow: 0 10px 35px rgba(0,0,0,0.45);
+}
+
+.info-poster img {
+    width: 180px;
+    border-radius: 12px;
+    box-shadow: 0 8px 25px rgba(0,0,0,0.6);
+}
+
+/* SAĞ TARAF */
+.info-content {
+    flex: 1;
+}
+
+.info-title {
+    font-size: 22px;
+    font-weight: 700;
+    margin-bottom: 4px;
+}
+
+.info-subtitle {
+    font-size: 13px;
+    font-style: italic;
+    color: #888;
+    margin-bottom: 12px;
+}
+
+/* AÇIKLAMA */
+.info-description {
+    font-size: 14px;
+    line-height: 1.7;
+    color: #bbb;
+    margin-bottom: 16px;
+}
+
+/* META */
+.info-meta {
+    display: flex;
+    gap: 40px;
+    font-size: 13px;
+    color: #aaa;
+}
+
+.meta-col {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.meta-col span {
+    color: #777;
+    min-width: 80px;
+    display: inline-block;
+}
+
+/* RESPONSIVE */
+@media (max-width: 900px) {
+    .anime-info {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+
+    .info-poster img {
+        width: 140px;
+    }
+
+    .info-meta {
+        justify-content: center;
+    }
+}
