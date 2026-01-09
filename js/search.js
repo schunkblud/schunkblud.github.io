@@ -3,36 +3,35 @@ const API_URL = "https://api.jikan.moe/v4";
 const params = new URLSearchParams(window.location.search);
 const query = params.get("q");
 
-const searchTitle = document.getElementById("searchTitle");
-const searchGrid = document.getElementById("searchGrid");
+const resultsGrid = document.getElementById("searchResults");
 
 if (!query) {
-    searchTitle.textContent = "Arama terimi bulunamadı.";
+    resultsGrid.innerHTML = "<p>Arama terimi bulunamadı.</p>";
 } else {
-    searchTitle.textContent = `"${query}" için arama sonuçları`;
     searchAnime(query);
 }
 
 async function searchAnime(q) {
     try {
+        resultsGrid.innerHTML = "<p>Aranıyor...</p>";
+
         const res = await fetch(`${API_URL}/anime?q=${encodeURIComponent(q)}&limit=24`);
         const data = await res.json();
 
         if (!data.data || data.data.length === 0) {
-            searchGrid.innerHTML = `<p style="color:#aaa;">Sonuç bulunamadı.</p>`;
+            resultsGrid.innerHTML = "<p>Sonuç bulunamadı.</p>";
             return;
         }
 
         renderGrid(data.data);
-
     } catch (err) {
-        console.error("Arama hatası:", err);
-        searchGrid.innerHTML = `<p style="color:red;">Bir hata oluştu.</p>`;
+        console.error(err);
+        resultsGrid.innerHTML = "<p>Arama sırasında hata oluştu.</p>";
     }
 }
 
 function renderGrid(animeList) {
-    searchGrid.innerHTML = "";
+    resultsGrid.innerHTML = "";
 
     animeList.forEach(anime => {
         const card = document.createElement("div");
@@ -53,6 +52,6 @@ function renderGrid(animeList) {
             window.location.href = `watch.html?anime=${anime.mal_id}&ep=1`;
         });
 
-        searchGrid.appendChild(card);
+        resultsGrid.appendChild(card);
     });
 }
