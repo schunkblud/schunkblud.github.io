@@ -1,20 +1,33 @@
-[
-  {
-    "title": "Jujutsu Kaisen",
-    "image": "assets/images/sample.jpg",
-    "episode": "EP 12",
-    "lang": "SUB"
-  },
-  {
-    "title": "One Piece",
-    "image": "assets/images/sample.jpg",
-    "episode": "EP 1090",
-    "lang": "SUB"
-  },
-  {
-    "title": "Demon Slayer",
-    "image": "assets/images/sample.jpg",
-    "episode": "EP 8",
-    "lang": "DUB"
-  }
-]
+{
+  "animeler": [
+    {
+      "id": "jujutsu-kaisen",
+      "ad": "Jujutsu Kaisen",
+      "yil": 2023,
+      "puan": 8.9,
+      "durum": "Devam Ediyor",
+      "turler": ["Aksiyon", "Fantastik", "Doğaüstü"],
+      "aciklama": "Lanetlerle dolu bir dünyada, özel yeteneklere sahip öğrenciler insanlığı korumak için savaşır.",
+      "kapak": "https://via.placeholder.com/300x420",
+      "bolumler": [
+        { "no": 1, "video": "https://www.youtube.com/embed/dQw4w9WgXcQ" },
+        { "no": 2, "video": "https://www.youtube.com/embed/dQw4w9WgXcQ" },
+        { "no": 3, "video": "https://www.youtube.com/embed/dQw4w9WgXcQ" }
+      ]
+    },
+    {
+      "id": "one-piece",
+      "ad": "One Piece",
+      "yil": 1999,
+      "puan": 9.1,
+      "durum": "Devam Ediyor",
+      "turler": ["Macera", "Aksiyon", "Komedi"],
+      "aciklama": "Luffy ve tayfasının efsanevi hazineyi bulma yolculuğu.",
+      "kapak": "https://via.placeholder.com/300x420",
+      "bolumler": [
+        { "no": 1088, "video": "https://www.youtube.com/embed/dQw4w9WgXcQ" },
+        { "no": 1089, "video": "https://www.youtube.com/embed/dQw4w9WgXcQ" }
+      ]
+    }
+  ]
+}
