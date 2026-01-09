@@ -216,17 +216,23 @@ function renderSlider(animeList) {
     dots.innerHTML = "";
 
     animeList.slice(0, 5).forEach((anime, index) => {
-        // Slide
-        const slide = document.createElement("div");
-        slide.className = "slide";
-        slide.innerHTML = `
-            <img src="${anime.images.jpg.large_image_url}">
-            <div class="slide-content">
-                <h1>${anime.title}</h1>
-                <p>${anime.synopsis ? anime.synopsis.slice(0, 150) + "..." : ""}</p>
-                <button class="btn-watch">Şimdi İzle</button>
-            </div>
-        `;
+    const slide = document.createElement("div");
+    slide.className = "slide";
+
+    // 🔥 EN KALİTELİ GÖRSEL SEÇİMİ
+    const imgSrc =
+        anime.images.webp?.large_image_url ||
+        anime.images.jpg?.large_image_url ||
+        anime.images.jpg?.image_url;
+
+    slide.innerHTML = `
+        <img src="${imgSrc}" alt="${anime.title}">
+        <div class="slide-content">
+            <h1>${anime.title}</h1>
+            <p>${anime.synopsis ? anime.synopsis.slice(0, 150) + "..." : ""}</p>
+            <button class="btn-watch">Şimdi İzle</button>
+        </div>
+    `;
 
         slide.addEventListener("click", () => {
             window.location.href = `watch.html?anime=${anime.mal_id}&ep=1`;
