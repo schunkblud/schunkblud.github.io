@@ -70,6 +70,12 @@ const year = anime.year || "Bilinmiyor";
 const score = anime.score || "?";
 
 card.innerHTML = `
+const favBtn = card.querySelector(".fav-btn");
+const favorites = getFavorites();
+
+if (favorites.includes(String(anime.mal_id))) {
+    favBtn.classList.add("active");
+}
     <div class="card-thumb">
         <img src="${anime.images.jpg.large_image_url}" alt="${anime.title}">
         <span class="badge hd">HD</span>
@@ -417,3 +423,30 @@ const filterBtn = document.getElementById("filterBtn");
 if (filterBtn) {
     filterBtn.addEventListener("click", applyFilters);
 }
+
+function getFavorites() {
+    return JSON.parse(localStorage.getItem("favorites")) || [];
+}
+
+function saveFavorites(list) {
+    localStorage.setItem("favorites", JSON.stringify(list));
+}
+
+document.addEventListener("click", (e) => {
+    if (e.target.classList.contains("fav-btn")) {
+        e.stopPropagation();
+
+        const animeId = e.target.dataset.id;
+        let favorites = getFavorites();
+
+        if (favorites.includes(animeId)) {
+            favorites = favorites.filter(id => id !== animeId);
+            e.target.classList.remove("active");
+        } else {
+            favorites.push(animeId);
+            e.target.classList.add("active");
+        }
+
+        saveFavorites(favorites);
+    }
+});
