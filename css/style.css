@@ -914,3 +914,138 @@ body {
 .anime-card:hover .card-info {
     background: linear-gradient(180deg, rgba(20,20,30,0.2), rgba(20,20,30,1));
 }
+
+/* ===== TOP ANIME SIDEBAR (9ANIME STYLE) ===== */
+
+.top-box {
+    background: linear-gradient(180deg, #1a1a22, #13131a);
+    padding: 14px;
+    border-radius: 14px;
+    box-shadow: 0 12px 35px rgba(0,0,0,0.5);
+}
+
+.top-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 12px;
+}
+
+.top-header h3 {
+    font-size: 15px;
+    font-weight: 700;
+}
+
+.top-tabs {
+    display: flex;
+    gap: 8px;
+}
+
+.top-tabs .tab {
+    font-size: 12px;
+    color: #888;
+    cursor: pointer;
+}
+
+.top-tabs .tab.active {
+    color: #9b5cff;
+    font-weight: 700;
+}
+
+/* FEATURED (1. SIRA) */
+.top-featured {
+    position: relative;
+    border-radius: 12px;
+    overflow: hidden;
+    margin-bottom: 12px;
+    cursor: pointer;
+}
+
+.top-featured img {
+    width: 100%;
+    display: block;
+    transition: transform 0.3s ease;
+}
+
+.top-featured:hover img {
+    transform: scale(1.05);
+}
+
+.featured-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(180deg, rgba(0,0,0,0.2), rgba(0,0,0,0.85));
+    display: flex;
+    align-items: flex-end;
+    padding: 10px;
+}
+
+.featured-rank {
+    background: #fff;
+    color: #000;
+    font-weight: 800;
+    border-radius: 6px;
+    padding: 4px 8px;
+    margin-right: 8px;
+}
+
+.featured-info h4 {
+    font-size: 14px;
+    margin: 0;
+}
+
+.featured-info span {
+    font-size: 12px;
+    color: #ccc;
+}
+
+/* LİSTE */
+#topAnimeList {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.top-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 8px 0;
+    border-bottom: 1px solid #222;
+    cursor: pointer;
+}
+
+.top-item:last-child {
+    border-bottom: none;
+}
+
+.top-rank {
+    width: 26px;
+    height: 26px;
+    background: #1f1f2a;
+    border-radius: 6px;
+    text-align: center;
+    line-height: 26px;
+    font-size: 12px;
+    color: #aaa;
+}
+
+.top-item img {
+    width: 38px;
+    height: 54px;
+    object-fit: cover;
+    border-radius: 6px;
+}
+
+.top-info {
+    font-size: 13px;
+}
+
+.top-title {
+    color: #eee;
+}
+
+.top-info span {
+    font-size: 11px;
+    color: #888;
+}
