@@ -249,3 +249,19 @@ body {
     font-size: 12px;
     text-decoration: none;
 }
+
+/* LAYOUT FIX */
+.layout {
+    display: flex;
+    align-items: flex-start;
+    gap: 20px;
+}
+
+.main-content {
+    width: 75%;
+}
+
+.sidebar {
+    width: 25%;
+    min-width: 260px;
+}
