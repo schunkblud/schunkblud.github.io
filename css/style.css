@@ -791,3 +791,91 @@ body {
 .anime-grid {
     overflow: visible !important;
 }
+
+/* ===== HOMEPAGE ANIME CARDS (9ANIME STYLE) ===== */
+
+.anime-card {
+    background: #121218;
+    border-radius: 12px;
+    overflow: hidden;
+    cursor: pointer;
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.anime-card:hover {
+    transform: translateY(-4px) scale(1.02);
+    box-shadow: 0 15px 40px rgba(0,0,0,0.6);
+}
+
+/* THUMB */
+.card-thumb {
+    position: relative;
+    overflow: hidden;
+}
+
+.card-thumb img {
+    width: 100%;
+    display: block;
+    transition: transform 0.3s ease;
+}
+
+.anime-card:hover .card-thumb img {
+    transform: scale(1.08);
+}
+
+/* BADGES */
+.badge {
+    position: absolute;
+    font-size: 11px;
+    padding: 2px 6px;
+    border-radius: 5px;
+    font-weight: 700;
+    color: #fff;
+}
+
+.badge.hd {
+    top: 6px;
+    left: 6px;
+    background: #ffffff;
+    color: #000;
+}
+
+.card-badges {
+    position: absolute;
+    bottom: 6px;
+    left: 6px;
+    display: flex;
+    gap: 4px;
+}
+
+.badge.ep {
+    background: #6d28d9;
+}
+
+.badge.sub {
+    background: #7c3aed;
+}
+
+.badge.dub {
+    background: #f59e0b;
+}
+
+/* TITLE AREA */
+.card-info {
+    padding: 10px;
+    background: linear-gradient(180deg, rgba(18,18,24,0.2), rgba(18,18,24,1));
+}
+
+.card-info h4 {
+    font-size: 14px;
+    color: #fff;
+    line-height: 1.4;
+    margin: 0;
+}
+
+/* GRID FIX */
+.anime-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+    gap: 16px;
+}
