@@ -33,13 +33,28 @@ function renderGrid(animeList) {
     animeList.forEach(anime => {
         const card = document.createElement("div");
         card.className = "anime-card";
+
+        const genres = anime.genres.map(g => g.name).join(", ");
+        const year = anime.year || "Bilinmiyor";
+
         card.innerHTML = `
             <img src="${anime.images.jpg.image_url}">
             <div class="title">${anime.title}</div>
+
+            <!-- HOVER PREVIEW -->
+            <div class="hover-preview">
+                <img src="${anime.images.jpg.large_image_url}">
+                <h4>${anime.title}</h4>
+                <div class="meta">${year} • ${genres}</div>
+                <p>${anime.synopsis ? anime.synopsis.slice(0, 150) + "..." : "Açıklama yok."}</p>
+                <a href="anime.html?id=${anime.mal_id}" class="btn-hover-watch">İzle</a>
+            </div>
         `;
+
         card.addEventListener("click", () => {
             window.location.href = `anime.html?id=${anime.mal_id}`;
         });
+
         grid.appendChild(card);
     });
 }
