@@ -252,3 +252,47 @@ async function loadAnimeDetailFromAPI() {
 }
 
 document.addEventListener("DOMContentLoaded", loadAnimeDetailFromAPI);
+
+// ===== SLIDER'I API'DEN DOLDUR =====
+
+async function loadSliderFromAPI() {
+    const slider = document.getElementById("mainSlider");
+    const content = document.getElementById("sliderContent");
+    if (!slider || !content) return;
+
+    // Slider'da gösterilecek anime
+    const featuredAnime = "Jujutsu Kaisen";
+
+    const anime = await fetchAnimeFromAPI(featuredAnime);
+    if (!anime) return;
+
+    // Arka planı kapak görseli yap
+    slider.style.background = `
+        linear-gradient(to right, rgba(0,0,0,0.85), rgba(0,0,0,0.2)),
+        url('${anime.kapak}') center/cover
+    `;
+
+    // İçerik
+    content.innerHTML = `
+        <div>
+            ${anime.turler.map(t => `<span class="slider-tag">${t}</span>`).join("")}
+        </div>
+
+        <h2>${anime.ad}</h2>
+
+        <div class="slider-meta">
+            <span>${anime.yil}</span>
+            <span>⭐ ${anime.puan}</span>
+            <span>${anime.durum}</span>
+        </div>
+
+        <p>${anime.aciklama}</p>
+
+        <a href="anime.html?id=${anime.id}">
+            <button class="watch-btn">▶ Şimdi İzle</button>
+        </a>
+    `;
+}
+
+// Sayfa yüklendiğinde slider'ı da doldur
+document.addEventListener("DOMContentLoaded", loadSliderFromAPI);
