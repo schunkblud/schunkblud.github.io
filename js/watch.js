@@ -52,6 +52,11 @@ function renderEpisodes(total) {
 function renderAnimeInfo(anime) {
     const container = document.getElementById("animeInfo");
 
+    // 🔥 TÜRLERİ LİNKLİ HALE GETİR
+    const genreHTML = anime.genres.map(g => {
+        return `<a href="index.html?genre=${g.mal_id}" class="genre-link">${g.name}</a>`;
+    }).join(", ");
+
     container.innerHTML = `
         <div class="info-poster">
             <img src="${anime.images.jpg.large_image_url}">
@@ -65,30 +70,25 @@ function renderAnimeInfo(anime) {
                 ${anime.synopsis || "Açıklama bulunamadı."}
             </p>
 
-            const genreHTML = anime.genres.map(g => {
-    return `<a href="index.html?genre=${g.mal_id}" class="genre-link">${g.name}</a>`;
-}).join(", ");
+            <div class="info-meta">
+                <div class="meta-col">
+                    <div><span>Tür:</span> ${genreHTML}</div>
+                    <div><span>Stüdyo:</span> ${anime.studios.map(s => s.name).join(", ") || "Bilinmiyor"}</div>
+                    <div><span>Yıl:</span> ${anime.year || "Bilinmiyor"}</div>
+                    <div><span>Durum:</span> ${anime.status}</div>
+                    <div><span>Tür:</span> ${anime.type || "?"}</div>
+                </div>
 
-container.innerHTML = `
-<div class="info-meta">
-    <div class="meta-col">
-        <div><span>Tür:</span> ${genreHTML}</div>
-        <div><span>Stüdyo:</span> ${anime.studios.map(s => s.name).join(", ") || "Bilinmiyor"}</div>
-        <div><span>Yıl:</span> ${anime.year || "Bilinmiyor"}</div>
-        <div><span>Durum:</span> ${anime.status}</div>
-        <div><span>Tür:</span> ${anime.type || "?"}</div>
-    </div>
-
-    <div class="meta-col">
-        <div><span>Puan:</span> ⭐ ${anime.score || "N/A"}</div>
-        <div><span>Başlangıç:</span> ${anime.season ? anime.season.toUpperCase() : "?"}</div>
-        <div><span>Süre:</span> ${anime.duration || "?"}</div>
-        <div><span>Kalite:</span> HD</div>
-        <div><span>İzlenme:</span> ${anime.members?.toLocaleString() || "?"}</div>
-    </div>
-</div>
-`;
-
+                <div class="meta-col">
+                    <div><span>Puan:</span> ⭐ ${anime.score || "N/A"}</div>
+                    <div><span>Başlangıç:</span> ${anime.season ? anime.season.toUpperCase() : "?"}</div>
+                    <div><span>Süre:</span> ${anime.duration || "?"}</div>
+                    <div><span>Kalite:</span> HD</div>
+                    <div><span>İzlenme:</span> ${anime.members?.toLocaleString() || "?"}</div>
+                </div>
+            </div>
+        </div>
+    `;
 }
 
 async function renderTopAnime(listData) {
