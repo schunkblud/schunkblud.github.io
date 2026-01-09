@@ -3,15 +3,26 @@ const API_URL = "https://api.jikan.moe/v4";
 let allAnime = [];
 
 async function loadHome() {
-    const res = await fetch(`${API_URL}/top/anime`);
-    const data = await res.json();
-    allAnime = data.data;
+    try {
+        const res = await fetch(`${API_URL}/top/anime`);
+
+        if (!res.ok) {
+            throw new Error("API Hatası: " + res.status);
+        }
+
+        const data = await res.json();
+
+        if (!data.data || data.data.length === 0) {
+            throw new Error("Anime verisi alınamadı.");
+        }
+
+        allAnime = data.data;
 
     // 🔥 SLIDER
-renderSlider(allAnime);
+    renderSlider(allAnime);
 
 // Son Güncellenenler
-renderGrid(allAnime.slice(5, 17));
+    renderGrid(allAnime.slice(5, 17));
 
     // 🔥 SAĞ PANEL (TOP ANIME)
     renderTopAnime(allAnime);
