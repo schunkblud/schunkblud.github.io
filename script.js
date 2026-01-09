@@ -5,7 +5,7 @@ function toggleMenu() {
 // ===== JSON'DAN ANIME YÜKLEME =====
 
 async function loadAnimes() {
-    const res = await fetch("data.json");
+    const res = await fetch("./data.json");
     const data = await res.json();
 
     const grid = document.querySelector(".anime-grid");
@@ -45,7 +45,7 @@ async function loadAnimeDetail() {
 
     if (!animeId) return;
 
-    const res = await fetch("data.json");
+    const res = await fetch("");
     const data = await res.json();
 
     const anime = data.animeler.find(a => a.id === animeId);
@@ -82,7 +82,7 @@ async function loadEpisodes() {
 
     if (!animeId) return;
 
-    const res = await fetch("data.json");
+    const res = await fetch("");
     const data = await res.json();
 
     const anime = data.animeler.find(a => a.id === animeId);
@@ -114,7 +114,7 @@ async function loadPlayer() {
 
     if (!animeId || !bolumNo) return;
 
-    const res = await fetch("data.json");
+    const res = await fetch("");
     const data = await res.json();
 
     const anime = data.animeler.find(a => a.id === animeId);
