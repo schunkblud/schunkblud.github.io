@@ -69,7 +69,7 @@ function renderAnimeInfo(anime) {
     return `<a href="index.html?genre=${g.mal_id}" class="genre-link">${g.name}</a>`;
 }).join(", ");
 
-            container.innerHTML =
+container.innerHTML = `
 <div class="info-meta">
     <div class="meta-col">
         <div><span>Tür:</span> ${genreHTML}</div>
