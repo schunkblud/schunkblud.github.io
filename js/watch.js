@@ -129,3 +129,10 @@ async function renderTopAnime(listData) {
     });
 }
 loadWatchPage();
+
+// === TOP ANIME SIDEBAR ===
+fetch("https://api.jikan.moe/v4/top/anime")
+  .then(res => res.json())
+  .then(data => {
+      renderTopAnime(data.data);
+  });
