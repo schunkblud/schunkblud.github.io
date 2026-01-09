@@ -53,16 +53,35 @@ function renderAnimeInfo(anime) {
     const container = document.getElementById("animeInfo");
 
     container.innerHTML = `
-        <img src="${anime.images.jpg.large_image_url}">
-        <div class="anime-details">
-            <h2>${anime.title}</h2>
-            <div class="anime-meta">
-                <span>Tür: ${anime.genres.map(g => g.name).join(", ")}</span>
-                <span>Yıl: ${anime.year || "Bilinmiyor"}</span>
-                <span>Durum: ${anime.status}</span>
-                <span>Puan: ⭐ ${anime.score || "N/A"}</span>
+        <div class="info-poster">
+            <img src="${anime.images.jpg.large_image_url}">
+        </div>
+
+        <div class="info-content">
+            <h2 class="info-title">${anime.title}</h2>
+            <div class="info-subtitle">${anime.title_english || anime.title_japanese || ""}</div>
+
+            <p class="info-description">
+                ${anime.synopsis || "Açıklama bulunamadı."}
+            </p>
+
+            <div class="info-meta">
+                <div class="meta-col">
+                    <div><span>Tür:</span> ${anime.genres.map(g => g.name).join(", ")}</div>
+                    <div><span>Stüdyo:</span> ${anime.studios.map(s => s.name).join(", ") || "Bilinmiyor"}</div>
+                    <div><span>Yıl:</span> ${anime.year || "Bilinmiyor"}</div>
+                    <div><span>Durum:</span> ${anime.status}</div>
+                    <div><span>Tür:</span> ${anime.type || "?"}</div>
+                </div>
+
+                <div class="meta-col">
+                    <div><span>Puan:</span> ⭐ ${anime.score || "N/A"}</div>
+                    <div><span>Başlangıç:</span> ${anime.season ? anime.season.toUpperCase() : "?"}</div>
+                    <div><span>Süre:</span> ${anime.duration || "?"}</div>
+                    <div><span>Kalite:</span> HD</div>
+                    <div><span>İzlenme:</span> ${anime.members?.toLocaleString() || "?"}</div>
+                </div>
             </div>
-            <p>${anime.synopsis || "Açıklama bulunamadı."}</p>
         </div>
     `;
 }
