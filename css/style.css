@@ -879,3 +879,38 @@ body {
     grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
     gap: 16px;
 }
+
+/* KAPAK KÖŞELERİ YUVARLA */
+.card-thumb img {
+    border-radius: 12px;
+}
+
+.anime-card {
+    border-radius: 14px;
+    overflow: hidden;
+}
+
+/* ALT BAŞLIK ALANI (DÜZENLEME) */
+.card-info {
+    padding: 12px 12px 14px;
+    background: linear-gradient(180deg, rgba(18,18,24,0.2), rgba(18,18,24,0.95));
+}
+
+.card-info h4 {
+    font-size: 14px;
+    font-weight: 600;
+    color: #fff;
+    line-height: 1.35;
+    margin: 0;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.card-thumb {
+    aspect-ratio: 2 / 3;
+}
+
+.anime-card:hover .card-info {
+    background: linear-gradient(180deg, rgba(20,20,30,0.2), rgba(20,20,30,1));
+}
