@@ -67,7 +67,10 @@ function renderAnimeInfo(anime) {
 
             <div class="info-meta">
                 <div class="meta-col">
-                    <div><span>Tür:</span> ${anime.genres.map(g => g.name).join(", ")}</div>
+                const genreHTML = anime.genres.map(g => {
+    return `<a href="index.html?genre=${g.mal_id}" class="genre-link">${g.name}</a>`;
+}).join(", ");
+                    <div><span>Tür:</span> ${genreHTML}</div>
                     <div><span>Stüdyo:</span> ${anime.studios.map(s => s.name).join(", ") || "Bilinmiyor"}</div>
                     <div><span>Yıl:</span> ${anime.year || "Bilinmiyor"}</div>
                     <div><span>Durum:</span> ${anime.status}</div>
