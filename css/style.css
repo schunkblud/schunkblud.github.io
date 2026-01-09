@@ -671,3 +671,123 @@ body {
         justify-content: center;
     }
 }
+
+/* ===== HOVER PREVIEW (9ANIME STYLE) ===== */
+
+.hover-preview {
+    position: absolute;
+    top: 0;
+    left: 105%;
+    width: 320px;
+    background: linear-gradient(180deg, #1a1a22, #121219);
+    border-radius: 14px;
+    padding: 14px;
+    z-index: 9999;
+    box-shadow: 0 15px 40px rgba(0,0,0,0.6);
+    display: none;
+    color: #ddd;
+}
+
+.anime-card:hover .hover-preview {
+    display: block;
+}
+
+/* HEADER */
+.hover-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 4px;
+}
+
+.hover-header h4 {
+    font-size: 15px;
+    font-weight: 700;
+    margin: 0;
+    color: #fff;
+}
+
+.hover-tags {
+    display: flex;
+    gap: 4px;
+}
+
+.tag {
+    font-size: 11px;
+    padding: 2px 6px;
+    border-radius: 4px;
+    font-weight: 600;
+}
+
+.tag.sub {
+    background: #7a5cff;
+    color: #fff;
+}
+
+.tag.ona {
+    background: #22c55e;
+    color: #fff;
+}
+
+/* EPISODE */
+.hover-episode {
+    font-size: 12px;
+    color: #aaa;
+    margin-bottom: 8px;
+}
+
+/* DESCRIPTION */
+.hover-desc {
+    font-size: 13px;
+    line-height: 1.6;
+    color: #bbb;
+    margin-bottom: 10px;
+}
+
+/* META */
+.hover-meta {
+    font-size: 12px;
+    color: #aaa;
+    margin-bottom: 12px;
+}
+
+.hover-meta div {
+    margin-bottom: 4px;
+}
+
+.hover-meta span {
+    color: #888;
+}
+
+/* WATCH BUTTON */
+.hover-watch-btn {
+    display: block;
+    text-align: center;
+    background: linear-gradient(90deg, #8b5cf6, #6d28d9);
+    color: #fff;
+    padding: 10px 0;
+    border-radius: 10px;
+    font-size: 14px;
+    font-weight: 700;
+    text-decoration: none;
+    transition: 0.2s;
+}
+
+.hover-watch-btn:hover {
+    opacity: 0.9;
+    transform: translateY(-1px);
+}
+
+/* Z-INDEX FIX (ÜSTE ÇIKSIN) */
+.anime-card {
+    position: relative;
+    z-index: 1;
+}
+
+.anime-card:hover {
+    z-index: 50;
+}
+
+.anime-grid {
+    overflow: visible !important;
+}
