@@ -40,10 +40,26 @@ const year = anime.year || "Bilinmiyor";
 const score = anime.score || "?";
 
 card.innerHTML = `
-    <img src="${anime.images.jpg.image_url}">
-    <div class="title">${anime.title}</div>
+    <div class="card-thumb">
+        <img src="${anime.images.jpg.large_image_url}" alt="${anime.title}">
+        
+        <!-- ÜST ETİKET -->
+        <span class="badge hd">HD</span>
 
-    <!-- HOVER PREVIEW (9ANIME STYLE) -->
+        <!-- ALT ETİKETLER -->
+        <div class="card-badges">
+            <span class="badge ep">Ep 1/${anime.episodes || "?"}</span>
+            <span class="badge sub">SUB</span>
+            <span class="badge dub">DUB</span>
+        </div>
+    </div>
+
+    <!-- ALT GRADIENT + BAŞLIK -->
+    <div class="card-info">
+        <h4>${anime.title}</h4>
+    </div>
+
+    <!-- HOVER PREVIEW (daha önce yaptığımız) -->
     <div class="hover-preview">
         <div class="hover-header">
             <h4>${anime.title}</h4>
@@ -61,10 +77,10 @@ card.innerHTML = `
 
         <div class="hover-meta">
             <div><span>Other names:</span> ${anime.title_english || anime.title_japanese || "-"}</div>
-            <div><span>Score:</span> ${score}</div>
-            <div><span>Date aired:</span> ${year}</div>
+            <div><span>Score:</span> ${anime.score || "?"}</div>
+            <div><span>Date aired:</span> ${anime.year || "Bilinmiyor"}</div>
             <div><span>Status:</span> ${anime.status}</div>
-            <div><span>Genre:</span> ${genres}</div>
+            <div><span>Genre:</span> ${anime.genres.map(g => g.name).join(", ")}</div>
         </div>
 
         <a href="watch.html?anime=${anime.mal_id}&ep=1" class="hover-watch-btn">
