@@ -452,3 +452,17 @@ body {
     font-size: 13px;
     color: #aaa;
 }
+
+/* HOVER ÜSTE ÇIKSIN */
+.anime-card {
+    position: relative;
+    z-index: 1;
+}
+
+.anime-card:hover {
+    z-index: 50;
+}
+
+.hover-preview {
+    z-index: 9999 !important;
+}
