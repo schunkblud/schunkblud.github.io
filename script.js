@@ -229,23 +229,25 @@ async function loadAnimeDetailFromAPI() {
         const container = document.getElementById("animeDetail");
         if (!container) return;
 
-        container.innerHTML = `
-            <h1>${anime.title}</h1>
+        const turkceAciklama = await translateToTurkish(anime.synopsis || "Açıklama yok.");
 
-            <div class="anime-meta">
-                <span>⭐ ${anime.score || "N/A"}</span>
-                <span>${anime.year || "Bilinmiyor"}</span>
-                <span>${anime.status}</span>
-            </div>
+container.innerHTML = `
+    <h1>${anime.title}</h1>
 
-            <div class="anime-genres">
-                ${anime.genres.map(g => `<span>${g.name}</span>`).join("")}
-            </div>
+    <div class="anime-meta">
+        <span>⭐ ${anime.score || "N/A"}</span>
+        <span>${anime.year || "Bilinmiyor"}</span>
+        <span>${anime.status}</span>
+    </div>
 
-            <p class="anime-desc">${anime.synopsis || "Açıklama yok."}</p>
+    <div class="anime-genres">
+        ${anime.genres.map(g => `<span>${g.name}</span>`).join("")}
+    </div>
 
-            <a href="bolumler.html?id=${anime.mal_id}" class="watch-btn big">📺 Bölümleri Gör</a>
-        `;
+    <p class="anime-desc">${turkceAciklama}</p>
+
+    <a href="bolumler.html?id=${anime.mal_id}" class="watch-btn big">📺 Bölümleri Gör</a>
+`;
     } catch (err) {
         console.error("Detay API Hatası:", err);
     }
