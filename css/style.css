@@ -1244,3 +1244,13 @@ body {
 .badge.ep { background: #7c4dff; color: #fff; }
 .badge.sub { background: #ff9800; color: #000; }
 .badge.dub { background: #03a9f4; color: #000; }
+
+.genre-link {
+    color: #a970ff;
+    text-decoration: none;
+    font-weight: 600;
+}
+
+.genre-link:hover {
+    text-decoration: underline;
+}
