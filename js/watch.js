@@ -135,6 +135,20 @@ async function renderTopAnime(listData) {
 }
 loadWatchPage();
 
+// 🔍 TOP BAR SEARCH
+const searchInput = document.getElementById("searchInput");
+
+if (searchInput) {
+    searchInput.addEventListener("keypress", (e) => {
+        if (e.key === "Enter") {
+            const value = searchInput.value.trim();
+            if (value) {
+                window.location.href = `search.html?q=${encodeURIComponent(value)}`;
+            }
+        }
+    });
+}
+
 // === TOP ANIME SIDEBAR ===
 fetch("https://api.jikan.moe/v4/top/anime")
   .then(res => res.json())
