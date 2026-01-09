@@ -15,7 +15,7 @@ async function loadWatchPage() {
     renderEpisodes(anime.episodes || 12);
     loadVideo(currentEpisode);
 
-    loadTopAnime();
+    Anime();
 }
 
 function loadVideo(ep) {
@@ -86,28 +86,46 @@ function renderAnimeInfo(anime) {
     `;
 }
 
-async function loadTopAnime() {
-    const res = await fetch(`${API_URL}/top/anime`);
-    const data = await res.json();
+async function renderTopAnime(listData) {
+    const featured = document.getElementById("topFeatured");
     const list = document.getElementById("topAnimeList");
+
+    featured.innerHTML = "";
     list.innerHTML = "";
 
-    data.data.slice(0, 9).forEach((anime, index) => {
+    // 1. SIRA (BÜYÜK KART)
+    const first = listData[0];
+    featured.innerHTML = `
+        <div class="top-featured" onclick="location.href='watch.html?anime=${first.mal_id}&ep=1'">
+            <img src="${first.images.jpg.large_image_url}">
+            <div class="featured-overlay">
+                <div class="featured-rank">1</div>
+                <div class="featured-info">
+                    <h4>${first.title}</h4>
+                    <span>👁 ${first.members?.toLocaleString() || "?"}</span>
+                </div>
+            </div>
+        </div>
+    `;
+
+    // 2–9 ARASI LİSTE
+    listData.slice(1, 9).forEach((anime, index) => {
         const li = document.createElement("li");
         li.className = "top-item";
         li.innerHTML = `
-            <div class="top-rank">${index + 1}</div>
+            <div class="top-rank">${index + 2}</div>
             <img src="${anime.images.jpg.image_url}">
             <div class="top-info">
-                ${anime.title}
-                <span>⭐ ${anime.score || "N/A"}</span>
+                <div class="top-title">${anime.title}</div>
+                <span>👁 ${anime.members?.toLocaleString() || "?"}</span>
             </div>
         `;
+
         li.addEventListener("click", () => {
             window.location.href = `watch.html?anime=${anime.mal_id}&ep=1`;
         });
+
         list.appendChild(li);
     });
 }
-
 loadWatchPage();
