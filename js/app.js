@@ -1,3 +1,6 @@
+const urlParams = new URLSearchParams(window.location.search);
+const genreParam = urlParams.get("genre");
+
 const API_URL = "https://api.jikan.moe/v4";
 
 let allAnime = [];
@@ -18,14 +21,23 @@ async function loadHome() {
 
         allAnime = data.data;
 
-    // 🔥 SLIDER
-    renderSlider(allAnime);
+// Eğer URL'de genre varsa filtrele
+let filteredAnime = allAnime;
 
-// Son Güncellenenler
-    renderGrid(allAnime.slice(5, 17));
+if (genreParam) {
+    filteredAnime = allAnime.filter(anime =>
+        anime.genres.some(g => g.mal_id == genreParam)
+    );
+}
 
-    // 🔥 SAĞ PANEL (TOP ANIME)
-    renderTopAnime(allAnime);
+// 🔥 SLIDER (her zaman genel liste)
+renderSlider(allAnime);
+
+// 🔥 SON GÜNCELLENENLER (filtreli liste)
+renderGrid(filteredAnime.slice(0, 12));
+
+// 🔥 SAĞ PANEL (TOP ANIME her zaman genel)
+renderTopAnime(allAnime);
 
     // Türleri Yükle
     loadGenres();
