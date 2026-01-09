@@ -2,23 +2,121 @@
 <html lang="tr">
 <head>
     <meta charset="UTF-8">
-    <title>Arama Sonuçları</title>
-    <link rel="stylesheet" href="style.css">
+    <title>Anime İzle</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
 
-<!-- TOP BAR (zaten mevcut olan navbar’ını buraya aynen koy) -->
+    <!-- HEADER / NAVBAR -->
+    <header class="topbar">
+  <div class="topbar-inner">
 
-<div class="container">
-    <h2 id="searchTitle">Arama Sonuçları</h2>
-
-    <div class="anime-grid" id="searchGrid">
-        <!-- Sonuçlar buraya gelecek -->
+    <!-- SOL: LOGO -->
+    <div class="topbar-left">
+      <div class="hamburger">☰</div>
+      <a href="index.html" class="logo">
+        <span class="logo-icon">9</span>Anime
+      </a>
     </div>
-</div>
 
-<script src="search.js"></script>
+    <!-- ORTA: ARAMA -->
+    <div class="topbar-center">
+      <div class="search-box">
+        <input type="text" id="searchInput" placeholder="Anime adı gir..." />
+        <button id="searchBtn">🔍</button>
+      </div>
+    </div>
+
+    <!-- SAĞ: İKONLAR + GİRİŞ -->
+    <div class="topbar-right">
+      <a href="#" class="icon-btn">🐦</a>
+      <a href="#" class="icon-btn">📨</a>
+      <a href="#" class="icon-btn">👾</a>
+
+      <button class="btn-login">Giriş Yap</button>
+    </div>
+
+  </div>
+</header>
+    <!-- MAIN CONTENT -->
+    <main class="container layout">
+
+        <!-- SOL TARAF -->
+        <div class="main-content">
+            <!-- Slider -->
+<div class="slider-wrapper">
+    <div id="animeSlider" class="slider-track"></div>
+    <div class="slider-dots" id="sliderDots"></div>
+</div>
+            </section>
+
+            <!-- Recently Updated -->
+            <section class="section">
+                <h2>Son Güncellenenler</h2>
+                <div class="anime-grid" id="recentGrid">
+                    <!-- Otomatik dolacak -->
+                </div>
+            </section>
+        </div>
+
+        <!-- SAĞ PANEL -->
+        <aside class="sidebar">
+            <div class="filter-box">
+                <h3>Hızlı Filtre</h3>
+
+                <label>Tür</label>
+                <select id="genreFilter">
+                    <option value="">Tümü</option>
+                </select>
+
+                <label>Sezon</label>
+                <select id="seasonFilter">
+                    <option value="">Tümü</option>
+                    <option value="spring">İlkbahar</option>
+                    <option value="summer">Yaz</option>
+                    <option value="fall">Sonbahar</option>
+                    <option value="winter">Kış</option>
+                </select>
+
+                <label>Yıl</label>
+<select id="yearFilter">
+    <option value="">Tümü</option>
+</select>
+
+<label>Sırala</label>
+<select id="sortFilter">
+    <option value="">Varsayılan</option>
+    <option value="score">En Yüksek Puan</option>
+    <option value="popularity">En Popüler</option>
+    <option value="year">En Yeni</option>
+</select>
+
+<button id="filterBtn" class="btn-filter">Filtrele</button>
+            </div>
+
+            <div class="top-box">
+    <div class="top-header">
+        <h3>En İyi Anime</h3>
+        <div class="top-tabs">
+            <span class="tab active" data-type="day">Bugün</span>
+            <span class="tab" data-type="week">Hafta</span>
+            <span class="tab" data-type="month">Ay</span>
+        </div>
+    </div>
+
+    <!-- BİRİNCİ SIRA (BÜYÜK KART) -->
+    <div id="topFeatured"></div>
+
+    <!-- LİSTE -->
+    <ul id="topAnimeList"></ul>
+        <!-- Otomatik dolacak -->
+    </ul>
+</div>
+        </aside>
+
+    </main>
+
+    <script src="js/app.js"></script>
 </body>
 </html>
-
-<input type="text" id="searchInput" placeholder="Anime adı gir...">
