@@ -296,3 +296,28 @@ async function loadSliderFromAPI() {
 
 // Sayfa yüklendiğinde slider'ı da doldur
 document.addEventListener("DOMContentLoaded", loadSliderFromAPI);
+
+// ===== METNİ OTOMATİK TÜRKÇEYE ÇEVİR =====
+
+async function translateToTurkish(text) {
+    if (!text) return "";
+
+    try {
+        const res = await fetch("https://libretranslate.de/translate", {
+            method: "POST",
+            body: JSON.stringify({
+                q: text,
+                source: "en",
+                target: "tr",
+                format: "text"
+            }),
+            headers: { "Content-Type": "application/json" }
+        });
+
+        const data = await res.json();
+        return data.translatedText || text;
+    } catch (err) {
+        console.error("Çeviri hatası:", err);
+        return text; // Çeviri olmazsa İngilizce göster
+    }
+}
