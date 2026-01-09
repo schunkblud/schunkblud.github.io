@@ -170,42 +170,40 @@ async function fetchAnimeFromAPI(animeName) {
     }
 }
 
-// ===== API'DEN ANASAYFAYA KART EKLE =====
-
+// ===== ANASAYFAYA TOPLU ANİME YÜKLE (JIKAN) =====
 async function loadAnimesFromAPI() {
     const grid = document.querySelector(".anime-grid");
     if (!grid) return;
 
-    grid.innerHTML = ""; // Önceki kartları temizle
+    grid.innerHTML = "";
 
-    const animeList = [
-        "Jujutsu Kaisen",
-        "One Piece",
-        "Attack on Titan",
-        "Naruto Shippuden"
-    ];
+    try {
+        // En popüler animeleri çek
+        const res = await fetch("https://api.jikan.moe/v4/top/anime?limit=12");
+        const data = await res.json();
 
-    for (const name of animeList) {
-        const anime = await fetchAnimeFromAPI(name);
-        if (!anime) continue;
+        for (const item of data.data) {
+            const card = document.createElement("div");
+            card.className = "anime-card";
 
-        const card = document.createElement("div");
-        card.className = "anime-card";
-
-        card.innerHTML = `
-            <div class="card-image">
-                <span class="hd-badge">HD</span>
-                <img src="${anime.kapak}" alt="${anime.ad}">
-                <div class="card-overlay">
-                    <a href="anime.html?id=${anime.id}">
-                        <button>▶ İzle</button>
-                    </a>
+            card.innerHTML = `
+                <div class="card-image">
+                    <span class="hd-badge">HD</span>
+                    <img src="${item.images.jpg.large_image_url}" alt="${item.title}">
+                    <div class="card-overlay">
+                        <a href="anime.html?id=${item.mal_id}">
+                            <button>▶ İzle</button>
+                        </a>
+                    </div>
                 </div>
-            </div>
-            <h4 class="anime-title">${anime.ad}</h4>
-        `;
+                <h4 class="anime-title">${item.title}</h4>
+            `;
 
-        grid.appendChild(card);
+            grid.appendChild(card);
+        }
+
+    } catch (err) {
+        console.error("Anime yükleme hatası:", err);
     }
 }
 
