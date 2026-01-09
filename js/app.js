@@ -36,21 +36,42 @@ function renderGrid(animeList) {
         card.className = "anime-card";
 
         const genres = anime.genres.map(g => g.name).join(", ");
-        const year = anime.year || "Bilinmiyor";
+const year = anime.year || "Bilinmiyor";
+const score = anime.score || "?";
 
-        card.innerHTML = `
-            <img src="${anime.images.jpg.image_url}">
-            <div class="title">${anime.title}</div>
+card.innerHTML = `
+    <img src="${anime.images.jpg.image_url}">
+    <div class="title">${anime.title}</div>
 
-            <!-- HOVER PREVIEW -->
-            <div class="hover-preview">
-                <img src="${anime.images.jpg.large_image_url}">
-                <h4>${anime.title}</h4>
-                <div class="meta">${year} • ${genres}</div>
-                <p>${anime.synopsis ? anime.synopsis.slice(0, 150) + "..." : "Açıklama yok."}</p>
-                <a href="anime.html?id=${anime.mal_id}" class="btn-hover-watch">İzle</a>
+    <!-- HOVER PREVIEW (9ANIME STYLE) -->
+    <div class="hover-preview">
+        <div class="hover-header">
+            <h4>${anime.title}</h4>
+            <div class="hover-tags">
+                <span class="tag sub">SUB</span>
+                <span class="tag ona">ONA</span>
             </div>
-        `;
+        </div>
+
+        <div class="hover-episode">Episode 1/${anime.episodes || "?"}</div>
+
+        <p class="hover-desc">
+            ${anime.synopsis ? anime.synopsis.slice(0, 180) + "..." : "Açıklama bulunamadı."}
+        </p>
+
+        <div class="hover-meta">
+            <div><span>Other names:</span> ${anime.title_english || anime.title_japanese || "-"}</div>
+            <div><span>Score:</span> ${score}</div>
+            <div><span>Date aired:</span> ${year}</div>
+            <div><span>Status:</span> ${anime.status}</div>
+            <div><span>Genre:</span> ${genres}</div>
+        </div>
+
+        <a href="watch.html?anime=${anime.mal_id}&ep=1" class="hover-watch-btn">
+            ▶ WATCH NOW!
+        </a>
+    </div>
+`;
 
         card.addEventListener("click", () => {
             window.location.href = `anime.html?id=${anime.mal_id}`;
