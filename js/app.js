@@ -7,16 +7,11 @@ async function loadHome() {
     const data = await res.json();
     allAnime = data.data;
 
-    // Slider
-    const featured = data.data[0];
-    const hero = document.getElementById("hero");
+    // 🔥 SLIDER
+renderSlider(allAnime);
 
-    hero.style.background = `linear-gradient(to right, rgba(0,0,0,0.8), rgba(0,0,0,0.3)), url('${featured.images.jpg.large_image_url}') center/cover no-repeat`;
-    hero.querySelector("h1").textContent = featured.title;
-    hero.querySelector("p").textContent = featured.synopsis?.slice(0, 150) + "...";
-
-    // Son Güncellenenler
-    renderGrid(allAnime.slice(1, 13));
+// Son Güncellenenler
+renderGrid(allAnime.slice(5, 17));
 
     // 🔥 SAĞ PANEL (TOP ANIME)
     renderTopAnime(allAnime);
@@ -188,3 +183,75 @@ document.addEventListener("click", (e) => {
         loadTopList(type);
     }
 });
+
+let currentSlide = 0;
+let sliderInterval;
+
+function renderSlider(animeList) {
+    const slider = document.getElementById("animeSlider");
+    const dots = document.getElementById("sliderDots");
+
+    slider.innerHTML = "";
+    dots.innerHTML = "";
+
+    animeList.slice(0, 5).forEach((anime, index) => {
+        // Slide
+        const slide = document.createElement("div");
+        slide.className = "slide";
+        slide.innerHTML = `
+            <img src="${anime.images.jpg.large_image_url}">
+            <div class="slide-content">
+                <h1>${anime.title}</h1>
+                <p>${anime.synopsis ? anime.synopsis.slice(0, 150) + "..." : ""}</p>
+                <button class="btn-watch">Şimdi İzle</button>
+            </div>
+        `;
+
+        slide.addEventListener("click", () => {
+            window.location.href = `watch.html?anime=${anime.mal_id}&ep=1`;
+        });
+
+        slider.appendChild(slide);
+
+        // Dot
+        const dot = document.createElement("span");
+        dot.addEventListener("click", () => {
+            goToSlide(index);
+        });
+
+        dots.appendChild(dot);
+    });
+
+    updateSlider();
+    startAutoSlide();
+}
+
+function goToSlide(index) {
+    currentSlide = index;
+    updateSlider();
+    restartAutoSlide();
+}
+
+function updateSlider() {
+    const slider = document.getElementById("animeSlider");
+    const dots = document.querySelectorAll("#sliderDots span");
+
+    slider.style.transform = `translateX(-${currentSlide * 100}%)`;
+
+    dots.forEach((dot, i) => {
+        dot.classList.toggle("active", i === currentSlide);
+    });
+}
+
+function startAutoSlide() {
+    sliderInterval = setInterval(() => {
+        const slides = document.querySelectorAll(".slide");
+        currentSlide = (currentSlide + 1) % slides.length;
+        updateSlider();
+    }, 5000);
+}
+
+function restartAutoSlide() {
+    clearInterval(sliderInterval);
+    startAutoSlide();
+}
