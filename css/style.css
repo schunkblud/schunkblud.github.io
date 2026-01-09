@@ -466,3 +466,11 @@ body {
 .hover-preview {
     z-index: 9999 !important;
 }
+
+.hover-preview {
+    pointer-events: auto;
+}
+
+.anime-card:hover .hover-preview {
+    display: block;
+}
