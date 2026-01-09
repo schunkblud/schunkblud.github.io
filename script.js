@@ -169,3 +169,44 @@ async function fetchAnimeFromAPI(animeName) {
         return null;
     }
 }
+
+// ===== API'DEN ANASAYFAYA KART EKLE =====
+
+async function loadAnimesFromAPI() {
+    const grid = document.querySelector(".anime-grid");
+    if (!grid) return;
+
+    grid.innerHTML = ""; // Önceki kartları temizle
+
+    const animeList = [
+        "Jujutsu Kaisen",
+        "One Piece",
+        "Attack on Titan",
+        "Naruto Shippuden"
+    ];
+
+    for (const name of animeList) {
+        const anime = await fetchAnimeFromAPI(name);
+        if (!anime) continue;
+
+        const card = document.createElement("div");
+        card.className = "anime-card";
+
+        card.innerHTML = `
+            <div class="card-image">
+                <span class="hd-badge">HD</span>
+                <img src="${anime.kapak}" alt="${anime.ad}">
+                <div class="card-overlay">
+                    <a href="anime.html?id=${anime.id}">
+                        <button>▶ İzle</button>
+                    </a>
+                </div>
+            </div>
+            <h4 class="anime-title">${anime.ad}</h4>
+        `;
+
+        grid.appendChild(card);
+    }
+}
+
+document.addEventListener("DOMContentLoaded", loadAnimesFromAPI);
