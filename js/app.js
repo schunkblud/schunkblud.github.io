@@ -42,6 +42,9 @@ renderTopAnime(allAnime);
     // Türleri Yükle
     loadGenres();
 
+        // 🔥 Filtre menülerini doldur
+populateFilters(allAnime);
+
         } catch (err) {
         console.error("Anasayfa yüklenemedi:", err);
 
@@ -319,4 +322,90 @@ if (searchInput) {
             }
         }
     });
+}
+
+function populateFilters(animeList) {
+    const genreSelect = document.getElementById("genreFilter");
+    const yearSelect = document.getElementById("yearFilter");
+
+    if (!genreSelect || !yearSelect) return;
+
+    // Türleri temizle
+    genreSelect.innerHTML = `<option value="">Tümü</option>`;
+    yearSelect.innerHTML = `<option value="">Tümü</option>`;
+
+    // Türleri çıkar
+    const genreMap = new Map();
+    animeList.forEach(anime => {
+        anime.genres.forEach(g => {
+            genreMap.set(g.mal_id, g.name);
+        });
+    });
+
+    genreMap.forEach((name, id) => {
+        const opt = document.createElement("option");
+        opt.value = id;
+        opt.textContent = name;
+        genreSelect.appendChild(opt);
+    });
+
+    // Yılları çıkar
+    const years = new Set();
+    animeList.forEach(anime => {
+        if (anime.year) years.add(anime.year);
+    });
+
+    [...years].sort((a, b) => b - a).forEach(year => {
+        const opt = document.createElement("option");
+        opt.value = year;
+        opt.textContent = year;
+        yearSelect.appendChild(opt);
+    });
+}
+
+function applyFilters() {
+    const genre = document.getElementById("genreFilter").value;
+    const season = document.getElementById("seasonFilter").value;
+    const year = document.getElementById("yearFilter").value;
+    const sort = document.getElementById("sortFilter").value;
+
+    let filtered = [...allAnime];
+
+    // Tür filtresi
+    if (genre) {
+        filtered = filtered.filter(anime =>
+            anime.genres.some(g => g.mal_id == genre)
+        );
+    }
+
+    // Sezon filtresi
+    if (season) {
+        filtered = filtered.filter(anime =>
+            anime.season && anime.season.toLowerCase() === season
+        );
+    }
+
+    // Yıl filtresi
+    if (year) {
+        filtered = filtered.filter(anime => anime.year == year);
+    }
+
+    // Sıralama
+    if (sort === "score") {
+        filtered.sort((a, b) => (b.score || 0) - (a.score || 0));
+    } 
+    else if (sort === "popularity") {
+        filtered.sort((a, b) => (b.members || 0) - (a.members || 0));
+    } 
+    else if (sort === "year") {
+        filtered.sort((a, b) => (b.year || 0) - (a.year || 0));
+    }
+
+    // Grid’i yeniden çiz
+    renderGrid(filtered.slice(0, 24));
+}
+
+const filterBtn = document.getElementById("filterBtn");
+if (filterBtn) {
+    filterBtn.addEventListener("click", applyFilters);
 }
