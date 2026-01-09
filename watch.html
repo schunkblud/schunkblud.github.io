@@ -1,1 +1,76 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <title>Anime İzle</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
 
+<!-- HEADER -->
+<header class="navbar">
+    <div class="nav-left">
+        <div class="logo">9Anime</div>
+    </div>
+    <div class="nav-center">
+        <input type="text" placeholder="Anime adı gir...">
+    </div>
+    <div class="nav-right">
+        <button class="btn-login">Giriş Yap</button>
+    </div>
+</header>
+
+<main class="container layout">
+
+    <!-- SOL TARAF -->
+    <div class="main-content">
+
+        <!-- VIDEO PLAYER -->
+        <section class="player-section">
+            <div class="video-wrapper">
+                <video id="videoPlayer" controls>
+                    <source src="" type="video/mp4">
+                    Tarayıcınız video oynatmayı desteklemiyor.
+                </video>
+            </div>
+        </section>
+
+        <!-- EPISODE LIST -->
+        <section class="episode-section">
+            <h3>Bölümler</h3>
+            <div class="episode-grid" id="episodeList">
+                <!-- Otomatik dolacak -->
+            </div>
+        </section>
+
+        <!-- ANIME INFO -->
+        <section class="anime-info" id="animeInfo">
+            <!-- Otomatik dolacak -->
+        </section>
+
+    </div>
+
+    <!-- SAĞ TARAF (TOP ANIME) -->
+    <aside class="sidebar">
+        <div class="top-box">
+            <div class="top-header">
+                <h3>En Çok İzlenenler</h3>
+                <div class="top-tabs">
+                    <span class="tab active" data-type="day">Bugün</span>
+                    <span class="tab" data-type="week">Hafta</span>
+                    <span class="tab" data-type="month">Ay</span>
+                </div>
+            </div>
+
+            <ul id="topAnimeList">
+                <!-- Otomatik dolacak -->
+            </ul>
+        </div>
+    </aside>
+
+</main>
+
+<script src="js/watch.js"></script>
+</body>
+</html>
