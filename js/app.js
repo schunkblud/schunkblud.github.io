@@ -29,6 +29,16 @@ async function loadHome() {
 
     // Türleri Yükle
     loadGenres();
+
+        } catch (err) {
+        console.error("Anasayfa yüklenemedi:", err);
+
+        // Kullanıcıya mesaj göster
+        const slider = document.getElementById("animeSlider");
+        if (slider) {
+            slider.innerHTML = `<div style="color:#fff; padding:40px;">Şu anda veriler yüklenemiyor. Lütfen biraz sonra tekrar deneyin.</div>`;
+        }
+    }
 }
 
 // Grid render
