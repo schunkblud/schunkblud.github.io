@@ -1,3 +1,5 @@
+console.log("script.js çalışıyor");
+
 function toggleMenu() {
     document.querySelector(".nav-links").classList.toggle("active");
 }
