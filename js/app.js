@@ -89,8 +89,8 @@ card.innerHTML = `
 `;
 
         card.addEventListener("click", () => {
-            window.location.href = `anime.html?id=${anime.mal_id}`;
-        });
+    window.location.href = `watch.html?anime=${anime.mal_id}&ep=1`;
+});
 
         grid.appendChild(card);
     });
