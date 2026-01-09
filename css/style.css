@@ -474,3 +474,119 @@ body {
 .anime-card:hover .hover-preview {
     display: block;
 }
+
+/* WATCH PAGE – 9ANIME STYLE */
+
+/* CARD */
+.watch-card {
+    background: linear-gradient(180deg, #181820, #13131a);
+    border-radius: 14px;
+    padding: 16px;
+    margin-bottom: 20px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.35);
+}
+
+/* PLAYER */
+.video-wrapper {
+    border-radius: 12px;
+    overflow: hidden;
+}
+
+.video-wrapper video {
+    width: 100%;
+    height: 460px;
+    background: #000;
+    border-radius: 12px;
+}
+
+/* SECTION HEADER */
+.section-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.section-header h3 {
+    font-size: 16px;
+    font-weight: 600;
+}
+
+/* EPISODES GRID */
+.episode-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(44px, 1fr));
+    gap: 8px;
+}
+
+.episode-btn {
+    background: #1c1c24;
+    border: 1px solid #262636;
+    border-radius: 8px;
+    padding: 8px 0;
+    text-align: center;
+    cursor: pointer;
+    font-size: 13px;
+    color: #bbb;
+    transition: 0.2s;
+}
+
+.episode-btn:hover {
+    background: #232334;
+    color: #fff;
+}
+
+.episode-btn.active {
+    background: #9b5cff;
+    border-color: #9b5cff;
+    color: #fff;
+    font-weight: 600;
+}
+
+/* ANIME INFO */
+.anime-info {
+    display: flex;
+    gap: 20px;
+    align-items: flex-start;
+}
+
+.anime-info img {
+    width: 180px;
+    border-radius: 12px;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.4);
+}
+
+.anime-details h2 {
+    margin-bottom: 8px;
+    font-size: 22px;
+}
+
+.anime-meta {
+    margin-bottom: 12px;
+}
+
+.anime-meta span {
+    display: inline-block;
+    margin-right: 14px;
+    font-size: 13px;
+    color: #aaa;
+}
+
+.anime-details p {
+    font-size: 14px;
+    line-height: 1.7;
+    color: #ccc;
+}
+
+/* RESPONSIVE */
+@media (max-width: 900px) {
+    .anime-info {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+
+    .anime-info img {
+        width: 140px;
+    }
+}
