@@ -210,3 +210,45 @@ async function loadAnimesFromAPI() {
 }
 
 document.addEventListener("DOMContentLoaded", loadAnimesFromAPI);
+
+// ===== API'DEN ANIME DETAY SAYFASI =====
+
+async function loadAnimeDetailFromAPI() {
+    const params = new URLSearchParams(window.location.search);
+    const animeId = params.get("id");
+
+    if (!animeId) return;
+
+    const url = `https://api.jikan.moe/v4/anime/${animeId}`;
+
+    try {
+        const res = await fetch(url);
+        const data = await res.json();
+        const anime = data.data;
+
+        const container = document.getElementById("animeDetail");
+        if (!container) return;
+
+        container.innerHTML = `
+            <h1>${anime.title}</h1>
+
+            <div class="anime-meta">
+                <span>⭐ ${anime.score || "N/A"}</span>
+                <span>${anime.year || "Bilinmiyor"}</span>
+                <span>${anime.status}</span>
+            </div>
+
+            <div class="anime-genres">
+                ${anime.genres.map(g => `<span>${g.name}</span>`).join("")}
+            </div>
+
+            <p class="anime-desc">${anime.synopsis || "Açıklama yok."}</p>
+
+            <a href="bolumler.html?id=${anime.mal_id}" class="watch-btn big">📺 Bölümleri Gör</a>
+        `;
+    } catch (err) {
+        console.error("Detay API Hatası:", err);
+    }
+}
+
+document.addEventListener("DOMContentLoaded", loadAnimeDetailFromAPI);
