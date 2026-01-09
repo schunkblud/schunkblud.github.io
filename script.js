@@ -73,3 +73,34 @@ async function loadAnimeDetail() {
 }
 
 document.addEventListener("DOMContentLoaded", loadAnimeDetail);
+
+// ===== BÖLÜM LİSTESİ =====
+
+async function loadEpisodes() {
+    const params = new URLSearchParams(window.location.search);
+    const animeId = params.get("id");
+
+    if (!animeId) return;
+
+    const res = await fetch("data.json");
+    const data = await res.json();
+
+    const anime = data.animeler.find(a => a.id === animeId);
+    if (!anime) return;
+
+    const list = document.getElementById("episodeList");
+    list.innerHTML = "";
+
+    anime.bolumler.forEach(bolum => {
+        const item = document.createElement("a");
+        item.className = "episode-item";
+        item.href = `izle.html?id=${anime.id}&bolum=${bolum.no}`;
+        item.innerHTML = `
+            <span>Bölüm ${bolum.no}</span>
+            <span>HD</span>
+        `;
+        list.appendChild(item);
+    });
+}
+
+document.addEventListener("DOMContentLoaded", loadEpisodes);
