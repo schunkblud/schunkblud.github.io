@@ -8,16 +8,35 @@
 </head>
 <body>
 
-<header class="navbar">
-    <div class="nav-left">
-        <div class="logo">9Anime</div>
+<header class="topbar">
+  <div class="topbar-inner">
+
+    <!-- SOL: LOGO -->
+    <div class="topbar-left">
+      <div class="hamburger">☰</div>
+      <a href="index.html" class="logo">
+        <span class="logo-icon">9</span>Anime
+      </a>
     </div>
-    <div class="nav-center">
-        <input type="text" placeholder="Anime adı gir...">
+
+    <!-- ORTA: ARAMA -->
+    <div class="topbar-center">
+      <div class="search-box">
+        <input type="text" id="searchInput" placeholder="Anime adı gir..." />
+        <button id="searchBtn">🔍</button>
+      </div>
     </div>
-    <div class="nav-right">
-        <button class="btn-login">Giriş Yap</button>
+
+    <!-- SAĞ: İKONLAR + GİRİŞ -->
+    <div class="topbar-right">
+      <a href="#" class="icon-btn">🐦</a>
+      <a href="#" class="icon-btn">📨</a>
+      <a href="#" class="icon-btn">👾</a>
+
+      <button class="btn-login">Giriş Yap</button>
     </div>
+
+  </div>
 </header>
 
 <main class="container layout">
