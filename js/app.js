@@ -6,7 +6,6 @@ async function loadHome() {
     const res = await fetch(`${API_URL}/top/anime`);
     const data = await res.json();
     allAnime = data.data;
-    loadTopList("day");
 
     // Slider
     const featured = data.data[0];
@@ -19,8 +18,8 @@ async function loadHome() {
     // Son Güncellenenler
     renderGrid(allAnime.slice(1, 13));
 
-    // Popüler Liste
-    loadTopList();
+    // 🔥 SAĞ PANEL (TOP ANIME)
+    renderTopAnime(allAnime);
 
     // Türleri Yükle
     loadGenres();
@@ -189,10 +188,3 @@ document.addEventListener("click", (e) => {
         loadTopList(type);
     }
 });
-
-// === TOP ANIME SIDEBAR ===
-fetch("https://api.jikan.moe/v4/top/anime")
-  .then(res => res.json())
-  .then(data => {
-      renderTopAnime(data.data);
-  });
