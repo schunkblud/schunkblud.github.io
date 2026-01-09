@@ -72,7 +72,15 @@ const score = anime.score || "?";
 card.innerHTML = `
     <div class="card-thumb">
         <img src="${anime.images.jpg.large_image_url}" alt="${anime.title}">
-        
+        <span class="badge hd">HD</span>
+
+        <button class="fav-btn" data-id="${anime.mal_id}">❤️</button>
+    </div>
+
+    <div class="card-info">
+        <h4>${anime.title}</h4>
+    </div>
+`;
         <!-- ÜST ETİKET -->
         <span class="badge hd">HD</span>
 
