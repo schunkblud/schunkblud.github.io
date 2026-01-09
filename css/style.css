@@ -961,10 +961,21 @@ body {
     cursor: pointer;
 }
 
+/* En İyi Anime - 1. sıradaki büyük kart */
+.top-featured {
+    height: 180px;          /* Daha küçük yükseklik */
+    border-radius: 12px;
+    overflow: hidden;
+    position: relative;
+    cursor: pointer;
+}
+
+/* İçindeki görsel */
 .top-featured img {
     width: 100%;
+    height: 100%;
+    object-fit: cover;      /* Taşma olmadan kırp */
     display: block;
-    transition: transform 0.3s ease;
 }
 
 .top-featured:hover img {
