@@ -36,3 +36,40 @@ async function loadAnimes() {
 }
 
 document.addEventListener("DOMContentLoaded", loadAnimes);
+
+// ===== ANIME DETAY SAYFASI =====
+
+async function loadAnimeDetail() {
+    const params = new URLSearchParams(window.location.search);
+    const animeId = params.get("id");
+
+    if (!animeId) return;
+
+    const res = await fetch("data.json");
+    const data = await res.json();
+
+    const anime = data.animeler.find(a => a.id === animeId);
+    if (!anime) return;
+
+    const container = document.getElementById("animeDetail");
+
+    container.innerHTML = `
+        <h1>${anime.ad}</h1>
+
+        <div class="anime-meta">
+            <span>⭐ ${anime.puan}</span>
+            <span>${anime.yil}</span>
+            <span>${anime.durum}</span>
+        </div>
+
+        <div class="anime-genres">
+            ${anime.turler.map(t => `<span>${t}</span>`).join("")}
+        </div>
+
+        <p class="anime-desc">${anime.aciklama}</p>
+
+        <a href="bolumler.html?id=${anime.id}" class="watch-btn big">📺 Bölümleri Gör</a>
+    `;
+}
+
+document.addEventListener("DOMContentLoaded", loadAnimeDetail);
