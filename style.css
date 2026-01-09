@@ -589,3 +589,26 @@ body {
     width: 100%;
     height: 100%;
 }
+
+/* ===== SLIDER ALAN ÇAKIŞMA DÜZELTME ===== */
+
+#mainSlider {
+    position: relative;
+    height: 360px;        /* Slider yüksekliği sabit */
+    margin-bottom: 40px; /* Altındaki içerikle boşluk */
+    overflow: hidden;
+}
+
+/* Slider içeriği kesinlikle slider alanının dışına taşmasın */
+#sliderContent {
+    position: relative;
+    z-index: 2;
+}
+
+/* Slider'ın altındaki ilk section (Son Güncellenenler) */
+.section-block:first-of-type,
+section:first-of-type {
+    margin-top: 0;
+    position: relative;
+    z-index: 1;
+}
