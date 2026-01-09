@@ -1385,3 +1385,26 @@ body {
         display: none;
     }
 }
+
+.fav-btn {
+    position: absolute;
+    top: 8px;
+    right: 8px;
+    background: rgba(0,0,0,0.6);
+    border: none;
+    border-radius: 50%;
+    color: white;
+    font-size: 14px;
+    cursor: pointer;
+    padding: 6px;
+    transition: 0.2s;
+    z-index: 5;
+}
+
+.fav-btn:hover {
+    background: #8b5cf6;
+}
+
+.fav-btn.active {
+    background: #ef4444;
+}
