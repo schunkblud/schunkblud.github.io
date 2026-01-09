@@ -136,3 +136,36 @@ async function loadPlayer() {
 }
 
 document.addEventListener("DOMContentLoaded", loadPlayer);
+
+// ===== JIKAN API İLE GERÇEK ANIME VERİSİ =====
+
+async function fetchAnimeFromAPI(animeName) {
+    const url = `https://api.jikan.moe/v4/anime?q=${encodeURIComponent(animeName)}&limit=1`;
+
+    try {
+        const res = await fetch(url);
+        const data = await res.json();
+
+        if (!data.data || data.data.length === 0) {
+            console.log("Anime bulunamadı:", animeName);
+            return null;
+        }
+
+        const anime = data.data[0];
+
+        return {
+            id: anime.mal_id,
+            ad: anime.title,
+            yil: anime.year || "Bilinmiyor",
+            puan: anime.score || "N/A",
+            durum: anime.status || "Bilinmiyor",
+            turler: anime.genres.map(g => g.name),
+            aciklama: anime.synopsis || "Açıklama bulunamadı.",
+            kapak: anime.images.jpg.large_image_url
+        };
+
+    } catch (err) {
+        console.error("API Hatası:", err);
+        return null;
+    }
+}
