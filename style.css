@@ -108,12 +108,10 @@ body {
 .slider {
     position: relative;
     height: 350px;
-    background:
-        linear-gradient(to right, rgba(0,0,0,0.85), rgba(0,0,0,0.2)),
-        url("https://i.imgur.com/9KQZ7ZJ.jpg") center/cover;
     border-radius: 12px;
     margin-bottom: 30px;
     overflow: hidden;
+    background: #000; /* varsayılan */
 }
 
 .slider-overlay {
