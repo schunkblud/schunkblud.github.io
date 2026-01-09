@@ -103,7 +103,6 @@ body {
 .anime-card {
     background: #1a1a22;
     border-radius: 8px;
-    overflow: hidden;
     cursor: pointer;
 }
 
@@ -236,7 +235,6 @@ body {
     line-height: 1.4;
     color: #ddd;
     max-height: 65px;
-    overflow: hidden;
 }
 
 .hover-preview .btn-hover-watch {
@@ -264,4 +262,33 @@ body {
 .sidebar {
     width: 25%;
     min-width: 260px;
+}
+
+/* HOVER FIX */
+.anime-card {
+    position: relative;
+    overflow: visible !important;
+    z-index: 1;
+}
+
+.hover-preview {
+    position: absolute;
+    top: 0;
+    left: 105%;
+    width: 260px;
+    background: #1a1a22;
+    border-radius: 10px;
+    padding: 12px;
+    z-index: 999;
+    box-shadow: 0 0 15px rgba(0,0,0,0.6);
+    display: none;
+}
+
+.anime-card:hover .hover-preview {
+    display: block;
+}
+
+/* Grid kesmesin */
+.anime-grid {
+    overflow: visible !important;
 }
