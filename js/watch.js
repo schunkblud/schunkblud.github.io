@@ -7,25 +7,19 @@ const episodeParam = params.get("ep") || 1;
 let currentEpisode = parseInt(episodeParam);
 
 async function loadWatchPage() {
-    // Anime detayları
     const res = await fetch(`${API_URL}/anime/${animeId}`);
     const data = await res.json();
     const anime = data.data;
 
     renderAnimeInfo(anime);
-    renderEpisodes(anime.episodes || 12); // MAL bazen null döndürüyor
+    renderEpisodes(anime.episodes || 12);
     loadVideo(currentEpisode);
 
-    // Sağ panel (Top Anime)
     loadTopAnime();
 }
 
-// VIDEO YÜKLE
 function loadVideo(ep) {
     const player = document.getElementById("videoPlayer");
-
-    // ŞİMDİLİK: Telifsiz / örnek video
-    // Sonra burayı kendi video kaynaklarınla değiştireceğiz
     player.src = "https://www.w3schools.com/html/mov_bbb.mp4";
 
     document.querySelectorAll(".episode-btn").forEach(btn => btn.classList.remove("active"));
@@ -33,7 +27,6 @@ function loadVideo(ep) {
     if (activeBtn) activeBtn.classList.add("active");
 }
 
-// BÖLÜM LİSTESİ
 function renderEpisodes(total) {
     const list = document.getElementById("episodeList");
     list.innerHTML = "";
@@ -44,9 +37,7 @@ function renderEpisodes(total) {
         btn.textContent = i;
         btn.dataset.ep = i;
 
-        if (i === currentEpisode) {
-            btn.classList.add("active");
-        }
+        if (i === currentEpisode) btn.classList.add("active");
 
         btn.addEventListener("click", () => {
             currentEpisode = i;
@@ -58,7 +49,6 @@ function renderEpisodes(total) {
     }
 }
 
-// ANIME BİLGİSİ
 function renderAnimeInfo(anime) {
     const container = document.getElementById("animeInfo");
 
@@ -77,7 +67,6 @@ function renderAnimeInfo(anime) {
     `;
 }
 
-// SAĞ PANEL – TOP ANIME
 async function loadTopAnime() {
     const res = await fetch(`${API_URL}/top/anime`);
     const data = await res.json();
