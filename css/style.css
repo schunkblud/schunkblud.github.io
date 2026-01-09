@@ -1254,3 +1254,134 @@ body {
 .genre-link:hover {
     text-decoration: underline;
 }
+
+/* === TOP BAR === */
+.topbar {
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    width: 100%;
+    background: rgba(15, 15, 25, 0.75);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid rgba(255,255,255,0.06);
+}
+
+.topbar-inner {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 10px 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+}
+
+/* SOL */
+.topbar-left {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+}
+
+.hamburger {
+    font-size: 20px;
+    color: #bbb;
+    cursor: pointer;
+    transition: color 0.2s;
+}
+.hamburger:hover { color: #fff; }
+
+.logo {
+    font-size: 22px;
+    font-weight: 800;
+    color: #fff;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+}
+.logo-icon {
+    background: linear-gradient(135deg, #9b5cff, #5f8cff);
+    color: #fff;
+    padding: 3px 8px;
+    border-radius: 6px;
+    margin-right: 6px;
+}
+
+/* ORTA */
+.topbar-center {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+}
+
+.search-box {
+    width: 100%;
+    max-width: 420px;
+    background: rgba(255,255,255,0.05);
+    border-radius: 999px;
+    display: flex;
+    align-items: center;
+    padding: 6px 12px;
+    border: 1px solid rgba(255,255,255,0.08);
+}
+
+.search-box input {
+    flex: 1;
+    background: transparent;
+    border: none;
+    outline: none;
+    color: #fff;
+    font-size: 14px;
+    padding: 6px;
+}
+
+.search-box input::placeholder {
+    color: #888;
+}
+
+.search-box button {
+    background: none;
+    border: none;
+    color: #aaa;
+    cursor: pointer;
+    font-size: 16px;
+}
+.search-box button:hover { color: #fff; }
+
+/* SAĞ */
+.topbar-right {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.icon-btn {
+    color: #aaa;
+    font-size: 16px;
+    text-decoration: none;
+    transition: color 0.2s;
+}
+.icon-btn:hover { color: #fff; }
+
+.btn-login {
+    background: linear-gradient(135deg, #9b5cff, #5f8cff);
+    border: none;
+    color: #fff;
+    padding: 8px 18px;
+    border-radius: 999px;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+.btn-login:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 6px 20px rgba(155,92,255,0.4);
+}
+
+/* MOBİL */
+@media (max-width: 768px) {
+    .topbar-center {
+        display: none;
+    }
+}
