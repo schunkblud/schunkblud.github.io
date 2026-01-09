@@ -6,6 +6,7 @@ async function loadHome() {
     const res = await fetch(`${API_URL}/top/anime`);
     const data = await res.json();
     allAnime = data.data;
+    loadTopList("day");
 
     // Slider
     const featured = data.data[0];
@@ -60,16 +61,37 @@ function renderGrid(animeList) {
 }
 
 // Popüler animeler
-function loadTopList() {
+function loadTopList(type = "day") {
     const list = document.getElementById("topAnimeList");
     list.innerHTML = "";
 
-    allAnime.slice(0, 8).forEach(anime => {
+    let sorted = [...allAnime];
+
+    // Sözde izlenme mantığı
+    if (type === "day") {
+        sorted = sorted.sort((a, b) => b.score - a.score);
+    } else if (type === "week") {
+        sorted = sorted.sort((a, b) => b.popularity - a.popularity);
+    } else if (type === "month") {
+        sorted = sorted.sort((a, b) => b.members - a.members);
+    }
+
+    sorted.slice(0, 9).forEach((anime, index) => {
         const li = document.createElement("li");
-        li.textContent = anime.title;
+        li.className = "top-item";
+        li.innerHTML = `
+            <div class="top-rank">${index + 1}</div>
+            <img src="${anime.images.jpg.image_url}">
+            <div class="top-info">
+                ${anime.title}
+                <span>⭐ ${anime.score || "N/A"}</span>
+            </div>
+        `;
+
         li.addEventListener("click", () => {
-            window.location.href = `anime.html?id=${anime.mal_id}`;
+            window.location.href = `watch.html?anime=${anime.mal_id}&ep=1`;
         });
+
         list.appendChild(li);
     });
 }
@@ -111,3 +133,14 @@ document.getElementById("filterBtn").addEventListener("click", () => {
 });
 
 loadHome();
+
+// TOP TAB SWITCH
+document.addEventListener("click", (e) => {
+    if (e.target.classList.contains("tab")) {
+        document.querySelectorAll(".tab").forEach(tab => tab.classList.remove("active"));
+        e.target.classList.add("active");
+
+        const type = e.target.dataset.type;
+        loadTopList(type);
+    }
+});
