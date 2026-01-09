@@ -1,1 +1,51 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <title>Anime İzle</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
 
+    <!-- HEADER / NAVBAR -->
+    <header class="navbar">
+        <div class="nav-left">
+            <div class="logo">9Anime</div>
+        </div>
+
+        <div class="nav-center">
+            <input type="text" id="searchInput" placeholder="Anime adı gir...">
+        </div>
+
+        <div class="nav-right">
+            <a href="#" class="icon">🐦</a>
+            <a href="#" class="icon">📨</a>
+            <a href="#" class="icon">👤</a>
+            <button class="btn-login">Sign in</button>
+        </div>
+    </header>
+
+    <!-- MAIN CONTENT -->
+    <main class="container">
+        <!-- Slider -->
+        <section class="hero" id="hero">
+            <div class="hero-content">
+                <h1>Yükleniyor...</h1>
+                <p>Anime bilgileri çekiliyor</p>
+                <button class="btn-watch">Watch now</button>
+            </div>
+        </section>
+
+        <!-- Recently Updated -->
+        <section class="section">
+            <h2>Recently Updated</h2>
+            <div class="anime-grid" id="recentGrid">
+                <!-- Otomatik dolacak -->
+            </div>
+        </section>
+    </main>
+
+    <script src="js/app.js"></script>
+</body>
+</html>
