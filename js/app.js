@@ -307,3 +307,16 @@ document.getElementById("searchInput").addEventListener("keypress", (e) => {
         document.getElementById("searchBtn").click();
     }
 });
+
+const searchInput = document.getElementById("searchInput");
+
+if (searchInput) {
+    searchInput.addEventListener("keypress", (e) => {
+        if (e.key === "Enter") {
+            const value = searchInput.value.trim();
+            if (value) {
+                window.location.href = `search.html?q=${encodeURIComponent(value)}`;
+            }
+        }
+    });
+}
