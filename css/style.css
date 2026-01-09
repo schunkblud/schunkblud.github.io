@@ -1150,3 +1150,16 @@ body {
 .slider-dots span.active {
     background: #8f5cff;
 }
+
+.genre-link {
+    color: #a970ff;
+    text-decoration: none;
+    font-weight: 500;
+    margin-right: 4px;
+    transition: all 0.2s ease;
+}
+
+.genre-link:hover {
+    color: #fff;
+    text-decoration: underline;
+}
