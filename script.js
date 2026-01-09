@@ -104,3 +104,33 @@ async function loadEpisodes() {
 }
 
 document.addEventListener("DOMContentLoaded", loadEpisodes);
+
+// ===== PLAYER SAYFASI =====
+
+async function loadPlayer() {
+    const params = new URLSearchParams(window.location.search);
+    const animeId = params.get("id");
+    const bolumNo = params.get("bolum");
+
+    if (!animeId || !bolumNo) return;
+
+    const res = await fetch("data.json");
+    const data = await res.json();
+
+    const anime = data.animeler.find(a => a.id === animeId);
+    if (!anime) return;
+
+    const bolum = anime.bolumler.find(b => b.no == bolumNo);
+    if (!bolum) return;
+
+    const player = document.getElementById("videoPlayer");
+    player.innerHTML = `
+        <iframe 
+            src="${bolum.video}"
+            frameborder="0"
+            allowfullscreen>
+        </iframe>
+    `;
+}
+
+document.addEventListener("DOMContentLoaded", loadPlayer);
