@@ -294,3 +294,16 @@ function restartAutoSlide() {
     clearInterval(sliderInterval);
     startAutoSlide();
 }
+
+document.getElementById("searchBtn").addEventListener("click", () => {
+    const q = document.getElementById("searchInput").value.trim();
+    if (q) {
+        window.location.href = `index.html?search=${encodeURIComponent(q)}`;
+    }
+});
+
+document.getElementById("searchInput").addEventListener("keypress", (e) => {
+    if (e.key === "Enter") {
+        document.getElementById("searchBtn").click();
+    }
+});
